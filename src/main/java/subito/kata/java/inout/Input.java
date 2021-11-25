@@ -1,5 +1,6 @@
 package subito.kata.java.inout;
 
+import subito.kata.java.room.Maze;
 import subito.kata.java.room.Room;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 
-public class Input {
+public class Input implements Maze {
 
     List<Room> rooms;
     Integer startRoomId;
@@ -31,18 +32,22 @@ public class Input {
         return startRoomId;
     }
 
+    @Override
     public List<String> objectsToCollect() {
         return objectsToCollect;
     }
 
+    @Override
     public Room startRoom() {
         return findRoomById(startRoomId);
     }
 
+    @Override
     public boolean hasNoRoom() {
         return rooms().isEmpty();
     }
 
+    @Override
     public Room findRoomById(int id) {
         return rooms.stream()
                 .filter(room -> room.id() == id)

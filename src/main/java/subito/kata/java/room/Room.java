@@ -1,7 +1,5 @@
 package subito.kata.java.room;
 
-import subito.kata.java.inout.Input;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +44,7 @@ public class Room {
         return objects.get(i);
     }
 
-    public void collectObjectsAndBuildRoute(Input input, Route route) {
+    public void collectObjectsAndBuildRoute(Maze input, Route route) {
         if (allObjectsCollected(input, route)) return;
         addThisRoomToRoute(input, route);
 
@@ -56,23 +54,23 @@ public class Room {
         moveToAdjacentRoom(input, east, route);
     }
 
-    private void addThisRoomToRoute(Input input, Route route) {
+    private void addThisRoomToRoute(Maze input, Route route) {
         if (allObjectsCollected(input, route)) return;
         if (! route.isEmpty() && route.lastId() == this.id) return;
         route.addRoom(this);
     }
 
-    private void moveToAdjacentRoom(Input input, Integer toRoom, Route route) {
+    private void moveToAdjacentRoom(Maze maze, Integer toRoom, Route route) {
         if (toRoom == null) return;
         if (route.contains(toRoom)) return;
 
-        Room adjacentRoom = input.findRoomById(toRoom);
-        adjacentRoom.collectObjectsAndBuildRoute(input, route);
-        addThisRoomToRoute(input, route);
+        Room adjacentRoom = maze.findRoomById(toRoom);
+        adjacentRoom.collectObjectsAndBuildRoute(maze, route);
+        addThisRoomToRoute(maze, route);
     }
 
-    private boolean allObjectsCollected(Input input, Route route) {
-        List<String> objectsToCollect = input.objectsToCollect();
+    private boolean allObjectsCollected(Maze maze, Route route) {
+        List<String> objectsToCollect = maze.objectsToCollect();
         List<String> collectedObjects = route.traversedRooms()
                 .stream()
                 .flatMap(room -> room.objects().stream().map(NamedObject::name))
