@@ -1,8 +1,6 @@
-package subito.kata.java.input;
+package subito.kata.java.inout;
 
 import org.junit.jupiter.api.Test;
-import subito.kata.java.inout.Input;
-import subito.kata.java.inout.InputReader;
 import subito.kata.java.room.NamedObject;
 import subito.kata.java.room.Room;
 
