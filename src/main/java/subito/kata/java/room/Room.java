@@ -45,17 +45,12 @@ public class Room {
 
     public void collectObjectsAndBuildRoute(Maze maze, Route route) {
         if (route.allObjectsAreCollected(maze)) return;
-        addThisRoomToRoute(maze, route);
+        route.addRoom(this);
 
         moveToAdjacentRoom(maze, south, route);
         moveToAdjacentRoom(maze, west, route);
         moveToAdjacentRoom(maze, north, route);
         moveToAdjacentRoom(maze, east, route);
-    }
-
-    private void addThisRoomToRoute(Maze maze, Route route) {
-        if (route.allObjectsAreCollected(maze)) return;
-        route.addRoom(this);
     }
 
     private void moveToAdjacentRoom(Maze maze, Integer toRoom, Route route) {
@@ -64,7 +59,9 @@ public class Room {
 
         Room adjacentRoom = maze.findRoomById(toRoom);
         adjacentRoom.collectObjectsAndBuildRoute(maze, route);
-        addThisRoomToRoute(maze, route);
+
+        if (route.allObjectsAreCollected(maze)) return;
+        route.addRoom(this);
     }
 
 }
