@@ -121,7 +121,24 @@ class RouteFinderTest {
         Route route = routeFinder.findRouteFrom(input);
 
         assertThat(route.isEmpty()).isTrue();
+    }
 
+    @Test
+    /*
+        Rooms:
+        (1*) -- (2) -- (3)
+     */
+    void stop_immediately_when_object_list_is_complete() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1).withEast(3))
+                .withRoom(Room.build().withId(3).withObjects("Plant").withWest(2))
+                .startFromRoom(1)
+                .collect("Knife");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 1, 2);
     }
 
     private void assertTraversedRoomsAre(Route route, Integer... ids) {
