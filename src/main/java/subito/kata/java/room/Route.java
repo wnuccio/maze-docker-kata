@@ -20,7 +20,7 @@ public class Route {
         rooms.add(room);
     }
 
-    public boolean contains(Integer roomId) {
+    public boolean hasAlreadyTraversed(Integer roomId) {
         return rooms.stream().anyMatch(room -> roomId.equals(room.id()));
     }
 
