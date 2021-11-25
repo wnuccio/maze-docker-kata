@@ -46,12 +46,15 @@ public class Room {
     public void collectObjectsAndBuildRoute(List<Room> rooms, Route route) {
         route.addRoom(this);
         if (east != null) {
-            Room eastRoom = rooms.stream()
-                    .filter(room -> room.id() == east)
-                    .findFirst()
-                    .orElseThrow(() -> new IllegalStateException(format("No such start room: %s ", east)));
-
+            Room eastRoom = findRoomById(rooms, east);
             eastRoom.collectObjectsAndBuildRoute(rooms, route);
         }
+    }
+
+    private static Room findRoomById(List<Room> rooms, Integer id) {
+        return rooms.stream()
+                .filter(room -> room.id() == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException(format("No such room: %s ", id)));
     }
 }
