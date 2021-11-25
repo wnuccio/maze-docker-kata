@@ -2,7 +2,6 @@ package subito.kata.java;
 
 import org.junit.jupiter.api.Test;
 
-import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RouteFinderTest {
@@ -19,7 +18,11 @@ class RouteFinderTest {
     @Test
     void build_a_route_with_one_room() {
         Input input = new InputBuilder()
-                .withRoom(new Room(3, "Kitchen", singletonList(new NamedObject("Knife"))))
+                .withRoom(new RoomBuilder()
+                        .withId(3)
+                        .withName("Kitchen")
+                        .withObjects("Knife")
+                        .build())
                 .startFromRoom(3)
                 .collect("Knife")
                 .build();

@@ -1,16 +1,21 @@
 package subito.kata.java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-    private int id;
-    private String name;
-    private List<NamedObject> objects;
+    int id;
+    String name;
+    List<NamedObject> objects;
 
     public Room(int id, String name, List<NamedObject> objects) {
         this.id = id;
         this.name = name;
         this.objects = objects;
+    }
+
+    public Room() {
+        objects = new ArrayList<>();
     }
 
     public int id() {
