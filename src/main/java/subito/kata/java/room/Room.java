@@ -50,10 +50,10 @@ public class Room {
         addThisRoomToRoute(input, route);
         System.out.printf("Visiting %s, Route: %s%n", id, route);
 
-        moveToAdjacentRoom(input, north, route);
-        moveToAdjacentRoom(input, east, route);
         moveToAdjacentRoom(input, south, route);
         moveToAdjacentRoom(input, west, route);
+        moveToAdjacentRoom(input, north, route);
+        moveToAdjacentRoom(input, east, route);
     }
 
     private void addThisRoomToRoute(Input input, Route route) {
