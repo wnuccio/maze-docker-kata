@@ -2,7 +2,6 @@ package subito.kata.java.room;
 
 import org.junit.jupiter.api.Test;
 import subito.kata.java.inout.Input;
-import subito.kata.java.inout.InputBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,7 +9,7 @@ class RouteFinderTest {
 
     @Test
     void build_an_empty_route_from_an_empty_room_list() {
-        Input input = new InputBuilder().noRoom();
+        Input input = Input.build().noRoom();
 
         Route route = new RouteFinder().findRouteFrom(input);
 
@@ -19,15 +18,13 @@ class RouteFinderTest {
 
     @Test
     void build_a_route_with_one_room() {
-        Input input = new InputBuilder()
-                .withRoom(new RoomBuilder()
+        Input input = Input.build()
+                .withRoom(Room.build()
                         .withId(3)
                         .withName("Kitchen")
-                        .withObjects("Knife")
-                        .build())
+                        .withObjects("Knife"))
                 .startFromRoom(3)
-                .collect("Knife")
-                .build();
+                .collect("Knife");
 
         Route route = new RouteFinder().findRouteFrom(input);
 

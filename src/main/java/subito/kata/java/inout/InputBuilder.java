@@ -1,6 +1,7 @@
 package subito.kata.java.inout;
 
 import subito.kata.java.room.Room;
+import subito.kata.java.room.RoomBuilder;
 
 public class InputBuilder {
 
@@ -19,15 +20,15 @@ public class InputBuilder {
         return this;
     }
 
+    public InputBuilder withRoom(RoomBuilder roomBuilder) {
+        return withRoom(roomBuilder.build());
+    }
+
     public InputBuilder startFromRoom(int i) {
         return this;
     }
 
-    public InputBuilder collect(String objects) {
-        return this;
-    }
-
-    public Input build() {
+    public Input collect(String objects) {
         return this.input;
     }
 }

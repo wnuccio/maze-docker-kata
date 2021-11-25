@@ -12,6 +12,10 @@ public class Room {
         objects = new ArrayList<>();
     }
 
+    public static RoomBuilder build() {
+        return new RoomBuilder();
+    }
+
     public int id() {
         return id;
     }
