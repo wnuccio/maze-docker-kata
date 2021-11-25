@@ -5,10 +5,10 @@ import java.util.List;
 public class Input {
 
     private List<Room> rooms;
-    private int startRoomId;
+    private Integer startRoomId;
     private List<String> objectsToCollect;
 
-    public Input(List<Room> rooms, int startRoomId, List<String> objectsToCollect) {
+    public Input(List<Room> rooms, Integer startRoomId, List<String> objectsToCollect) {
         this.rooms = rooms;
         this.startRoomId = startRoomId;
         this.objectsToCollect = objectsToCollect;
