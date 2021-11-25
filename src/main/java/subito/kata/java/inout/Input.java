@@ -36,13 +36,17 @@ public class Input {
     }
 
     public Room startRoom() {
-        return rooms.stream()
-                .filter(room -> room.id() == startRoomId)
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException(format("No such start room: %s ", startRoomId)));
+        return findRoomById(startRoomId);
     }
 
     public boolean hasNoRoom() {
         return rooms().isEmpty();
+    }
+
+    public Room findRoomById(int id) {
+        return rooms.stream()
+                .filter(room -> room.id() == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException(format("No such room: %s ", id)));
     }
 }

@@ -8,7 +8,7 @@ public class RouteFinder {
 
         Route route = new Route();
         Room startRoom = input.startRoom();
-        startRoom.collectObjectsAndBuildRoute(input.rooms(), route);
+        startRoom.collectObjectsAndBuildRoute(input, route);
         return route;
     }
 }

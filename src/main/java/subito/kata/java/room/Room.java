@@ -1,9 +1,9 @@
 package subito.kata.java.room;
 
+import subito.kata.java.inout.Input;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.String.format;
 
 public class Room {
     int id;
@@ -43,18 +43,11 @@ public class Room {
         return objects.get(i);
     }
 
-    public void collectObjectsAndBuildRoute(List<Room> rooms, Route route) {
+    public void collectObjectsAndBuildRoute(Input input, Route route) {
         route.addRoom(this);
         if (east != null) {
-            Room eastRoom = findRoomById(rooms, east);
-            eastRoom.collectObjectsAndBuildRoute(rooms, route);
+            Room eastRoom = input.findRoomById(east);
+            eastRoom.collectObjectsAndBuildRoute(input, route);
         }
-    }
-
-    private static Room findRoomById(List<Room> rooms, Integer id) {
-        return rooms.stream()
-                .filter(room -> room.id() == id)
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException(format("No such room: %s ", id)));
     }
 }
