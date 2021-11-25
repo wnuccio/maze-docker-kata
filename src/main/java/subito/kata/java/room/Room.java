@@ -40,4 +40,8 @@ public class Room {
     public NamedObject getObject(int i) {
         return objects.get(i);
     }
+
+    public void collectObjectsAndBuildRoute(Route route) {
+        route.addRoom(this);
+    }
 }
