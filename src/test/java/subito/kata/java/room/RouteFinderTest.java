@@ -106,6 +106,24 @@ class RouteFinderTest {
         assertTraversedRoomsAre(route, 2, 1, 2, 3);
     }
 
+    @Test
+    /*
+        Rooms:
+        (1*) -- (2)
+     */
+    void build_an_empty_route_when_object_list_is_empty() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1))
+                .startFromRoom(1)
+                .collect();
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertThat(route.isEmpty()).isTrue();
+
+    }
+
     private void assertTraversedRoomsAre(Route route, Integer... ids) {
         List<Integer> roomIds = route.traversedRooms().stream().map(Room::id).collect(Collectors.toList());
         assertThat(route.traversedRooms()).first().matches(startRoom -> startRoom.id() == ids[0]);

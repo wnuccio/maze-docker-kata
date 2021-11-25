@@ -47,8 +47,8 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
+        if (allObjectsCollected(input, route)) return;
         addThisRoomToRoute(input, route);
-        System.out.printf("Visiting %s, Route: %s%n", id, route);
 
         moveToAdjacentRoom(input, south, route);
         moveToAdjacentRoom(input, west, route);
@@ -78,6 +78,7 @@ public class Room {
                 .flatMap(room -> room.objects().stream().map(NamedObject::name))
                 .distinct()
                 .collect(toList());
-        return objectsToCollect.size() == collectedObjects.size();
+
+        return collectedObjects.containsAll(objectsToCollect);
     }
 }
