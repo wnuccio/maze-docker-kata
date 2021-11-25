@@ -44,7 +44,7 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
-        if (thisRoomIsAlreadyIn(route)) return;
+        if (route.contains(this)) return;
 
         route.addRoom(this);
         moveToAdjacentRoom(input, route, east);
@@ -55,9 +55,5 @@ public class Room {
         if (adjacentRouteId == null) return;
         Room adjacentRoom = input.findRoomById(adjacentRouteId);
         adjacentRoom.collectObjectsAndBuildRoute(input, route);
-    }
-
-    private boolean thisRoomIsAlreadyIn(Route route) {
-        return route.contains(this);
     }
 }
