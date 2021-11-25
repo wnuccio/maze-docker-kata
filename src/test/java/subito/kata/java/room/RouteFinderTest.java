@@ -34,10 +34,7 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms:
-        (1*) -- (2)
-     */
+    // Rooms: (1*) -- (2)
     void build_a_route_with_two_rooms() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
@@ -51,10 +48,7 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms:
-        (1) -- (2*)
-     */
+    // Rooms: (1) -- (2*)
     void build_a_route_with_two_rooms_and_start_from_the_second() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
@@ -68,12 +62,10 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms in a square:
-           (3) -- (4)
-            |      |
-           (2) -- (1*)
-     */
+    // Rooms:
+    //         (3) -- (4)
+    //          |      |
+    //         (2) -- (1*)
     void build_a_route_with_four_rooms_in_a_square() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(3).withEast(4).withSouth(2).withObjects("Obj3"))
@@ -89,10 +81,7 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms in a row:
-           (1) -- (2*) -- (3)
-     */
+    // Rooms: (1) -- (2*) -- (3)
     void build_a_route_with_three_rooms_in_a_row_starting_in_the_middle() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withEast(2).withObjects("Obj1"))
@@ -107,10 +96,7 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms:
-        (1*) -- (2)
-     */
+    // Rooms: (1*) -- (2)
     void build_an_empty_route_when_object_list_is_empty() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
@@ -124,10 +110,7 @@ class RouteFinderTest {
     }
 
     @Test
-    /*
-        Rooms:
-        (1*) -- (2) -- (3)
-     */
+    // Rooms: (1*) -- (2) -- (3)
     void stop_immediately_when_object_list_is_complete() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withEast(2))
