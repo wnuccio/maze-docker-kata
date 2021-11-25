@@ -1,6 +1,4 @@
 Casi di test
-- labirinto vuoto
-- stanza unica
 - due stanze collegate con due oggetti
 - due stanze collegate partendo però dalla seconda
 - più stanze collegate, ciascuna con un oggetto
@@ -12,3 +10,10 @@ Casi di test
   - stanze ben collegate in modo simmetrico,
   - oggetti tutti diversi,
   )
+
+Completati
+- labirinto vuoto
+- stanza unica
+
+Da fare
+- la lista di oggetti deve diventare un set?
