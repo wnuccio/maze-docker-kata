@@ -18,7 +18,7 @@ class RouteFinderTest {
 
         Route route = routeFinder.findRouteFrom(input);
 
-        assertThat(route.isEmpty()).isTrue();
+        assertThat(route.traversedRooms()).isEmpty();
     }
 
     @Test
@@ -106,7 +106,7 @@ class RouteFinderTest {
 
         Route route = routeFinder.findRouteFrom(input);
 
-        assertThat(route.isEmpty()).isTrue();
+        assertThat(route.traversedRooms()).isEmpty();
     }
 
     @Test

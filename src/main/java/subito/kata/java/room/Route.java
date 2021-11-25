@@ -12,10 +12,6 @@ public class Route {
         rooms = new ArrayList<>();
     }
 
-    public boolean isEmpty() {
-        return true;
-    }
-
     public List<Room> traversedRooms() {
         return this.rooms;
     }
