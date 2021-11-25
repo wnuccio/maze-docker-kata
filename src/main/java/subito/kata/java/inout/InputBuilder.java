@@ -2,14 +2,12 @@ package subito.kata.java.inout;
 
 import subito.kata.java.room.Room;
 
-import static java.util.Collections.emptyList;
-
 public class InputBuilder {
 
     private final Input input;
 
     public Input noRoom() {
-        return new Input(emptyList(), null, emptyList());
+        return new Input();
     }
 
     public InputBuilder() {

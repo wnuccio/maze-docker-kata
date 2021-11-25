@@ -8,13 +8,7 @@ public class Room {
     String name;
     List<NamedObject> objects;
 
-    public Room(int id, String name, List<NamedObject> objects) {
-        this.id = id;
-        this.name = name;
-        this.objects = objects;
-    }
-
-    public Room() {
+    Room() {
         objects = new ArrayList<>();
     }
 
