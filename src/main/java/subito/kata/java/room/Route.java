@@ -21,4 +21,9 @@ public class Route {
     public void addRoom(Room room) {
         rooms.add(room);
     }
+
+    public boolean contains(Room room) {
+        return rooms.stream()
+                .anyMatch(r -> r.id() == room.id());
+    }
 }

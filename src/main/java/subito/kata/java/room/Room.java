@@ -44,10 +44,20 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
+        if (alreadyTraversed(route)) return;
+
         route.addRoom(this);
         if (east != null) {
             Room eastRoom = input.findRoomById(east);
             eastRoom.collectObjectsAndBuildRoute(input, route);
         }
+        if (west != null) {
+            Room eastRoom = input.findRoomById(west);
+            eastRoom.collectObjectsAndBuildRoute(input, route);
+        }
+    }
+
+    private boolean alreadyTraversed(Route route) {
+        return route.contains(this);
     }
 }

@@ -1,5 +1,4 @@
 Casi di test
-- due stanze collegate partendo però dalla seconda
 - più stanze collegate, ciascuna con un oggetto
 - tre stanze collegate con solo le prime due aventi oggetti 
   (e due oggetti da collezionare, si ferma alla seconda stanza)
@@ -14,6 +13,7 @@ Completati
 - labirinto vuoto
 - stanza unica
 - due stanze collegate con due oggetti
+- due stanze collegate partendo però dalla seconda
 
 Da fare
 - differenziare i concetti di Input e Maze (segregando l'interfaccia, anche per disaccoppiare 

@@ -46,9 +46,21 @@ class RouteFinderTest {
         assertTraversedRoomsAre(route, 1, 2);
     }
 
+    @Test
+    void build_a_route_with_two_rooms_and_start_from_the_second() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1))
+                .startFromRoom(2)
+                .collect("Plant", "Knife");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 2, 1);
+    }
+
     private void assertTraversedRoomsAre(Route route, Integer... ids) {
         List<Integer> roomIds = route.traversedRooms().stream().map(Room::id).collect(Collectors.toList());
         assertThat(roomIds).containsExactly(ids);
-
     }
 }
