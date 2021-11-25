@@ -44,7 +44,7 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
-        if (alreadyTraversed(route)) return;
+        if (thisRoomIsAlreadyIn(route)) return;
 
         route.addRoom(this);
         if (east != null) {
@@ -57,7 +57,7 @@ public class Room {
         }
     }
 
-    private boolean alreadyTraversed(Route route) {
+    private boolean thisRoomIsAlreadyIn(Route route) {
         return route.contains(this);
     }
 }
