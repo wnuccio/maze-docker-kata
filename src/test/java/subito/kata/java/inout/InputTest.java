@@ -15,6 +15,9 @@ class InputTest {
                 .withRoom(Room.build().withId(3).withName("room3").build())
                 .collect("");
 
-        assertThat(input.findRoomById(2).name()).isEqualTo("room2");
+        assertThat(input.rooms()).hasSize(3);
+        Room room2 = input.rooms().get(1);
+        assertThat(room2.id()).isEqualTo(2);
+        assertThat(room2.name()).isEqualTo("room2");
     }
 }
