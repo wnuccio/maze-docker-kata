@@ -1,5 +1,4 @@
 Casi di test
-- due stanze collegate con due oggetti
 - due stanze collegate partendo però dalla seconda
 - più stanze collegate, ciascuna con un oggetto
 - tre stanze collegate con solo le prime due aventi oggetti 
@@ -14,7 +13,9 @@ Casi di test
 Completati
 - labirinto vuoto
 - stanza unica
+- due stanze collegate con due oggetti
 
 Da fare
-- spostare la logica duplicata di ricerca stanza per id da Rooom collectObjectsAndBuildRoute a Input
+- differenziare i concetti di Input e Maze (segregando l'interfaccia, anche per disaccoppiare 
+  il layer room da inout)
 - la lista di oggetti deve diventare un set?
