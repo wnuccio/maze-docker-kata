@@ -39,8 +39,8 @@
       ]
     }
   ],
-  "Input Start Room ID": 2,
-  "Input Objects To Collect": [
+  "startRoomId": 2,
+  "objectsToCollect": [
     "Knife",
     "Potted Plant"
   ]
