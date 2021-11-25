@@ -88,7 +88,6 @@ class RouteFinderTest {
         assertTraversedRoomsAre(route, 1, 2, 3, 4);
     }
 
-//    @Disabled
     @Test
     /*
         Rooms in a row:
