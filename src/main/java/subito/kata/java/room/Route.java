@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Route {
-    private List<Room> rooms = new ArrayList<>();
+    private List<Room> rooms;
+
+    Route() {
+        rooms = new ArrayList<>();
+    }
 
     public boolean isEmpty() {
         return true;
