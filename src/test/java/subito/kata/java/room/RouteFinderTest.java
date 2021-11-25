@@ -113,11 +113,11 @@ class RouteFinderTest {
     // Rooms: (1*) -- (2) -- (3)
     void stop_immediately_when_object_list_is_complete() {
         Input input = Input.build()
-                .withRoom(Room.build().withId(1).withEast(2))
-                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1).withEast(3))
-                .withRoom(Room.build().withId(3).withObjects("Plant").withWest(2))
+                .withRoom(Room.build().withId(1).withObjects("Knife").withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Plant").withWest(1).withEast(3))
+                .withRoom(Room.build().withId(3).withObjects("Key").withWest(2))
                 .startFromRoom(1)
-                .collect("Knife");
+                .collect("Knife", "Plant");
 
         Route route = routeFinder.findRouteFrom(input);
 
@@ -128,7 +128,7 @@ class RouteFinderTest {
     // Rooms: (1*) -- (2) -- (3)
     void traverse_irrilevant_rooms_until_object_list_is_complete() {
         Input input = Input.build()
-                .withRoom(Room.build().withId(1).withEast(2))
+                .withRoom(Room.build().withId(1).withEast(2)) // empty room
                 .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1).withEast(3))
                 .withRoom(Room.build().withId(3).withObjects("Plant").withWest(2))
                 .startFromRoom(1)
