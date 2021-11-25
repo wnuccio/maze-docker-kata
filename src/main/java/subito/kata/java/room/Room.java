@@ -7,6 +7,8 @@ public class Room {
     int id;
     String name;
     List<NamedObject> objects;
+    int east;
+    int west;
 
     Room() {
         objects = new ArrayList<>();

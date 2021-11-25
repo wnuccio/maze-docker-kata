@@ -28,7 +28,7 @@ public class InputBuilder {
         return this;
     }
 
-    public Input collect(String objects) {
+    public Input collect(String... objects) {
         return this.input;
     }
 }

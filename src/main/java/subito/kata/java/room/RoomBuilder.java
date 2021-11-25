@@ -23,6 +23,16 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder withEast(int id) {
+        room.east = id;
+        return this;
+    }
+
+    public RoomBuilder withWest(int id) {
+        room.west = id;
+        return this;
+    }
+
     public Room build() {
         return this.room;
     }

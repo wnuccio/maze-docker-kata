@@ -15,7 +15,6 @@ public class Input {
         rooms = new ArrayList<>();
         startRoomId = null;
         objectsToCollect = new ArrayList<>();
-
     }
 
     public static InputBuilder build() {

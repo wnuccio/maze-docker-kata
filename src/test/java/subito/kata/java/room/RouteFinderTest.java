@@ -1,7 +1,11 @@
 package subito.kata.java.room;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import subito.kata.java.inout.Input;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,5 +36,28 @@ class RouteFinderTest {
 
         assertThat(route.rooms()).hasSize(1);
         assertThat(route.rooms()).first().matches(room -> room.id() == 3);
+    }
+
+    @Disabled
+    @Test
+    void build_a_route_with_two_rooms() {
+        Input input = Input.build()
+                .withRoom(Room.build()
+                        .withId(1)
+                        .withName("Hallway")
+                        .withObjects("Plant")
+                        .withEast(2))
+                .withRoom(Room.build()
+                        .withId(2)
+                        .withName("Kitchen")
+                        .withObjects("Knife")
+                        .withWest(1))
+                .startFromRoom(1)
+                .collect("Plant", "Knife");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        List<Integer> roomIds = route.rooms().stream().map(Room::id).collect(Collectors.toList());
+        assertThat(roomIds).containsExactly(1, 2);
     }
 }
