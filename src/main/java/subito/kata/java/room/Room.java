@@ -5,6 +5,9 @@ import subito.kata.java.inout.Input;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+import static java.util.stream.Collectors.toList;
+
 public class Room {
     int id;
     String name;
@@ -36,7 +39,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return String.format("Room[%s]", id);
+        return format("Room[%s]", id);
     }
 
     public NamedObject getObject(int i) {
@@ -44,18 +47,42 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
-        if (route.contains(this)) return;
+        if (allObjectsCollected(input, route)) return;
 
         route.addRoom(this);
-        moveToAdjacentRoom(input, route, north);
-        moveToAdjacentRoom(input, route, east);
-        moveToAdjacentRoom(input, route, south);
-        moveToAdjacentRoom(input, route, west);
+        System.out.printf("Visiting %s, Route: %s%n", id, route);
+
+        moveToAdjacentRoom(input, north, route);
+        addNewlyThisRoom(input, route);
+        moveToAdjacentRoom(input, east, route);
+        addNewlyThisRoom(input, route);
+        moveToAdjacentRoom(input, south, route);
+        addNewlyThisRoom(input, route);
+        moveToAdjacentRoom(input, west, route);
+        addNewlyThisRoom(input, route);
     }
 
-    private void moveToAdjacentRoom(Input input, Route route, Integer adjacentRouteId) {
-        if (adjacentRouteId == null) return;
-        Room adjacentRoom = input.findRoomById(adjacentRouteId);
+    private void addNewlyThisRoom(Input input, Route route) {
+        if (allObjectsCollected(input, route)) return;
+        if (route.lastId() == this.id) return;
+        route.addRoom(this);
+    }
+
+    private void moveToAdjacentRoom(Input input, Integer toRoom, Route route) {
+        if (toRoom == null) return;
+        if (route.contains(toRoom)) return;
+
+        Room adjacentRoom = input.findRoomById(toRoom);
         adjacentRoom.collectObjectsAndBuildRoute(input, route);
+    }
+
+    private boolean allObjectsCollected(Input input, Route route) {
+        List<String> objectsToCollect = input.objectsToCollect();
+        List<String> collectedObjects = route.traversedRooms()
+                .stream()
+                .flatMap(room -> room.objects().stream().map(NamedObject::name))
+                .distinct()
+                .collect(toList());
+        return objectsToCollect.size() == collectedObjects.size();
     }
 }

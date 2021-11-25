@@ -3,6 +3,8 @@ package subito.kata.java.inout;
 import subito.kata.java.room.Room;
 import subito.kata.java.room.RoomBuilder;
 
+import java.util.Arrays;
+
 public class InputBuilder {
 
     private final Input input;
@@ -30,6 +32,7 @@ public class InputBuilder {
     }
 
     public Input collect(String... objects) {
+        input.objectsToCollect.addAll(Arrays.asList(objects));
         return this.input;
     }
 }

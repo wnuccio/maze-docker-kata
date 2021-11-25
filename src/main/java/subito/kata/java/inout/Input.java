@@ -11,7 +11,7 @@ public class Input {
 
     List<Room> rooms;
     Integer startRoomId;
-    private List<String> objectsToCollect;
+    List<String> objectsToCollect;
 
     Input() {
         rooms = new ArrayList<>();

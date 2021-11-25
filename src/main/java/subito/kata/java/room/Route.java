@@ -23,7 +23,19 @@ public class Route {
     }
 
     public boolean contains(Room room) {
-        return rooms.stream()
-                .anyMatch(r -> r.id() == room.id());
+        return rooms.stream().anyMatch(r -> r.id() == room.id());
+    }
+
+    public boolean contains(Integer roomId) {
+        return rooms.stream().anyMatch(room -> roomId.equals(room.id()));
+    }
+
+    @Override
+    public String toString() {
+        return rooms.toString();
+    }
+
+    public int lastId() {
+        return rooms.get(rooms.size()-1).id;
     }
 }
