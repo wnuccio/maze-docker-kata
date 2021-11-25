@@ -1,0 +1,7 @@
+{
+  "rooms": [
+    { "id": 1, "name": "A room", "north": 2, "objects": [ { "name":  "An object"}] }
+  ],
+  "startRoomId": 1,
+  "objectsToCollect": ["An object"]
+}

@@ -7,7 +7,7 @@ public class App {
     }
 
     private static Input readInput(String inputFile) {
-        return null;
+        return new InputReader(inputFile).readInput();
     }
 
     private static void writeOutput(Input input, String outputFile) {
