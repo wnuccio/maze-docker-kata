@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RouteBuilderTest {
+class RouteFinderTest {
 
     @Test
     void build_an_empty_route_from_an_empty_room_list() {
         Input input = new InputBuilder().noRoom();
 
-        Route route = new RouteBuilder().buildRouteFrom(input);
+        Route route = new RouteFinder().findRouteFrom(input);
 
         assertThat(route.isEmpty()).isTrue();
     }
@@ -24,7 +24,7 @@ class RouteBuilderTest {
                 .collect("Knife")
                 .build();
 
-        Route route = new RouteBuilder().buildRouteFrom(input);
+        Route route = new RouteFinder().findRouteFrom(input);
 
         assertThat(route.rooms()).hasSize(1);
         assertThat(route.rooms()).first().matches(room -> room.id() == 3);

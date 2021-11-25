@@ -2,19 +2,19 @@ package subito.kata.java;
 
 public class App {
     private InputReader inputReader;
-    private RouteBuilder routeBuilder;
+    private RouteFinder routeFinder;
     private OutputWriter outputWriter;
 
-    public App(InputReader inputReader, RouteBuilder routeBuilder, OutputWriter outputWriter) {
+    public App(InputReader inputReader, RouteFinder routeFinder, OutputWriter outputWriter) {
         this.inputReader = inputReader;
-        this.routeBuilder = routeBuilder;
+        this.routeFinder = routeFinder;
         this.outputWriter = outputWriter;
     }
 
     public static void main(String[] strings) {
         App app = new App(
                 new InputReader("input.json"),
-                new RouteBuilder(),
+                new RouteFinder(),
                 new OutputWriter("output.txt"));
 
         app.execute();
@@ -22,7 +22,7 @@ public class App {
 
     private void execute() {
         Input input = inputReader.readInput();
-        Route route = routeBuilder.buildRouteFrom(input);
+        Route route = routeFinder.findRouteFrom(input);
         outputWriter.writeOutput(route);
     }
 }

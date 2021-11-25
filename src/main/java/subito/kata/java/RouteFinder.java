@@ -1,7 +1,7 @@
 package subito.kata.java;
 
-public class RouteBuilder {
-    public Route buildRouteFrom(Input input) {
+public class RouteFinder {
+    public Route findRouteFrom(Input input) {
         if (input.rooms().isEmpty()) return new Route();
 
         Route route = new Route();
