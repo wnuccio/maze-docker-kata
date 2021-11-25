@@ -1,5 +1,6 @@
 package subito.kata.java.room;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import subito.kata.java.inout.Input;
 
@@ -86,6 +87,25 @@ class RouteFinderTest {
         Route route = routeFinder.findRouteFrom(input);
 
         assertTraversedRoomsAre(route, 1, 2, 3, 4);
+    }
+
+    @Disabled
+    @Test
+    /*
+        Rooms in a row:
+           (1) -- (2*) -- (3)
+     */
+    void build_a_route_with_three_rooms_in_a_row_starting_in_the_middle() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withEast(2).withObjects("Obj1"))
+                .withRoom(Room.build().withId(2).withWest(1).withEast(3).withObjects("Obj2"))
+                .withRoom(Room.build().withId(3).withWest(2).withObjects("Obj3"))
+                .startFromRoom(2)
+                .collect("Obj1", "Obj2", "Obj3", "Obj4");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 2, 1, 2, 3);
     }
 
     private void assertTraversedRoomsAre(Route route, Integer... ids) {

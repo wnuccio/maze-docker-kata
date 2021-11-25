@@ -48,8 +48,8 @@ public class Room {
 
         route.addRoom(this);
         moveToAdjacentRoom(input, route, north);
-        moveToAdjacentRoom(input, route, south);
         moveToAdjacentRoom(input, route, east);
+        moveToAdjacentRoom(input, route, south);
         moveToAdjacentRoom(input, route, west);
     }
 
