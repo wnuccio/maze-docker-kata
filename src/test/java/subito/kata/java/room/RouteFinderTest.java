@@ -34,6 +34,10 @@ class RouteFinderTest {
     }
 
     @Test
+    /*
+        Rooms:
+        (1*) -- (2)
+     */
     void build_a_route_with_two_rooms() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
@@ -47,6 +51,10 @@ class RouteFinderTest {
     }
 
     @Test
+    /*
+        Rooms:
+        (1) -- (2*)
+     */
     void build_a_route_with_two_rooms_and_start_from_the_second() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
@@ -62,9 +70,9 @@ class RouteFinderTest {
     @Test
     /*
         Rooms in a square:
-           3 -- 4
-           |    |
-           2 -- 1
+           (3) -- (4)
+            |      |
+           (2) -- (1*)
      */
     void build_a_route_with_four_rooms_in_a_square() {
         Input input = Input.build()
