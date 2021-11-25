@@ -24,7 +24,8 @@ public class InputBuilder {
         return withRoom(roomBuilder.build());
     }
 
-    public InputBuilder startFromRoom(int i) {
+    public InputBuilder startFromRoom(Integer i) {
+        input.startRoomId = i;
         return this;
     }
 

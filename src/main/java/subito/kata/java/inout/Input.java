@@ -5,10 +5,12 @@ import subito.kata.java.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class Input {
 
     List<Room> rooms;
-    private Integer startRoomId;
+    Integer startRoomId;
     private List<String> objectsToCollect;
 
     Input() {
@@ -25,11 +27,18 @@ public class Input {
         return rooms;
     }
 
-    public int startRoomId() {
+    public Integer startRoomId() {
         return startRoomId;
     }
 
     public List<String> objectsToCollect() {
         return objectsToCollect;
+    }
+
+    public Room startRoom() {
+        return rooms.stream()
+                .filter(room -> room.id() == startRoomId)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException(format("No such start room: %s ", startRoomId)));
     }
 }

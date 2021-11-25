@@ -7,7 +7,7 @@ public class RouteFinder {
         if (input.rooms().isEmpty()) return new Route();
 
         Route route = new Route();
-        route.addRoom(input.rooms().get(0));
+        route.addRoom(input.startRoom());
         return route;
     }
 }
