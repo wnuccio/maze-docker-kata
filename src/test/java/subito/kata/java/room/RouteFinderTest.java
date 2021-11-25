@@ -124,6 +124,21 @@ class RouteFinderTest {
         assertTraversedRoomsAre(route, 1, 2);
     }
 
+    @Test
+    // Rooms: (1*) -- (2) -- (3)
+    void traverse_irrilevant_rooms_until_object_list_is_complete() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1).withEast(3))
+                .withRoom(Room.build().withId(3).withObjects("Plant").withWest(2))
+                .startFromRoom(1)
+                .collect("Plant");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 1, 2, 3);
+    }
+
     private void assertTraversedRoomsAre(Route route, Integer... ids) {
         List<Integer> roomIds = route.traversedRooms().stream().map(Room::id).collect(Collectors.toList());
         assertThat(route.traversedRooms()).first().matches(startRoom -> startRoom.id() == ids[0]);
