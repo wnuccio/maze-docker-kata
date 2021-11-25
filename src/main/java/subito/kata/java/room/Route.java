@@ -33,8 +33,8 @@ public class Route {
         return rooms.toString();
     }
 
-    public int lastId() {
-        return rooms.get(rooms.size()-1).id;
+    public boolean allObjectsAreCollected(Maze maze) {
+        return collectedObjects().containsAll(maze.objectsToCollect());
     }
 
     private List<String> collectedObjects() {
@@ -43,9 +43,5 @@ public class Route {
                 .flatMap(room -> room.objects().stream().map(NamedObject::name))
                 .distinct()
                 .collect(toList());
-    }
-
-    public boolean allObjectsAreCollected(Maze maze) {
-        return collectedObjects().containsAll(maze.objectsToCollect());
     }
 }

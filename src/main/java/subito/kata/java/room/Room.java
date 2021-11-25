@@ -55,7 +55,6 @@ public class Room {
 
     private void addThisRoomToRoute(Maze maze, Route route) {
         if (route.allObjectsAreCollected(maze)) return;
-        if (! route.isEmpty() && route.lastId() == this.id) return;
         route.addRoom(this);
     }
 
