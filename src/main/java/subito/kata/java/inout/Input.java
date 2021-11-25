@@ -41,4 +41,8 @@ public class Input {
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException(format("No such start room: %s ", startRoomId)));
     }
+
+    public boolean hasNoRoom() {
+        return rooms().isEmpty();
+    }
 }
