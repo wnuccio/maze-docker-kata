@@ -33,10 +33,8 @@ class RouteFinderTest {
 
         Route route = routeFinder.findRouteFrom(input);
 
-        assertThat(route.rooms()).hasSize(1);
-        assertThat(route.rooms()).first().matches(room -> room.id() == 3);
+        assertTraversedRoomsAre(route, 3);
     }
-
 
     @Test
     void build_a_route_with_two_rooms() {
@@ -56,7 +54,12 @@ class RouteFinderTest {
 
         Route route = routeFinder.findRouteFrom(input);
 
-        List<Integer> roomIds = route.rooms().stream().map(Room::id).collect(Collectors.toList());
-        assertThat(roomIds).containsExactly(1, 2);
+        assertTraversedRoomsAre(route, 1, 2);
+    }
+
+    private void assertTraversedRoomsAre(Route route, Integer... ids) {
+        List<Integer> roomIds = route.traversedRooms().stream().map(Room::id).collect(Collectors.toList());
+        assertThat(roomIds).containsExactly(ids);
+
     }
 }

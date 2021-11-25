@@ -14,7 +14,7 @@ public class Route {
         return true;
     }
 
-    public List<Room> rooms() {
+    public List<Room> traversedRooms() {
         return this.rooms;
     }
 
