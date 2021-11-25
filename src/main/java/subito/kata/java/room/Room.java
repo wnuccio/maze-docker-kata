@@ -47,24 +47,18 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Input input, Route route) {
-        if (allObjectsCollected(input, route)) return;
-
-        route.addRoom(this);
+        addThisRoomToRoute(input, route);
         System.out.printf("Visiting %s, Route: %s%n", id, route);
 
         moveToAdjacentRoom(input, north, route);
-        addNewlyThisRoom(input, route);
         moveToAdjacentRoom(input, east, route);
-        addNewlyThisRoom(input, route);
         moveToAdjacentRoom(input, south, route);
-        addNewlyThisRoom(input, route);
         moveToAdjacentRoom(input, west, route);
-        addNewlyThisRoom(input, route);
     }
 
-    private void addNewlyThisRoom(Input input, Route route) {
+    private void addThisRoomToRoute(Input input, Route route) {
         if (allObjectsCollected(input, route)) return;
-        if (route.lastId() == this.id) return;
+        if (! route.isEmpty() && route.lastId() == this.id) return;
         route.addRoom(this);
     }
 
@@ -74,6 +68,7 @@ public class Room {
 
         Room adjacentRoom = input.findRoomById(toRoom);
         adjacentRoom.collectObjectsAndBuildRoute(input, route);
+        addThisRoomToRoute(input, route);
     }
 
     private boolean allObjectsCollected(Input input, Route route) {
