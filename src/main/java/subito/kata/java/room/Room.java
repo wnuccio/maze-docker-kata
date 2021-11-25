@@ -34,9 +34,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "name='" + name + '\'' +
-                '}';
+        return String.format("Room[%s]", id);
     }
 
     public NamedObject getObject(int i) {
