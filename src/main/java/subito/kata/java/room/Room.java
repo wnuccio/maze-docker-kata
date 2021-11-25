@@ -47,14 +47,14 @@ public class Room {
         if (thisRoomIsAlreadyIn(route)) return;
 
         route.addRoom(this);
-        if (east != null) {
-            Room eastRoom = input.findRoomById(east);
-            eastRoom.collectObjectsAndBuildRoute(input, route);
-        }
-        if (west != null) {
-            Room eastRoom = input.findRoomById(west);
-            eastRoom.collectObjectsAndBuildRoute(input, route);
-        }
+        moveToAdjacentRoom(input, route, east);
+        moveToAdjacentRoom(input, route, west);
+    }
+
+    private void moveToAdjacentRoom(Input input, Route route, Integer adjacentRouteId) {
+        if (adjacentRouteId == null) return;
+        Room adjacentRoom = input.findRoomById(adjacentRouteId);
+        adjacentRoom.collectObjectsAndBuildRoute(input, route);
     }
 
     private boolean thisRoomIsAlreadyIn(Route route) {
