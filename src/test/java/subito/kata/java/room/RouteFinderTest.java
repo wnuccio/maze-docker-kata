@@ -24,10 +24,7 @@ class RouteFinderTest {
     @Test
     void build_a_route_with_one_room() {
         Input input = Input.build()
-                .withRoom(Room.build()
-                        .withId(3)
-                        .withName("Kitchen")
-                        .withObjects("Knife"))
+                .withRoom(Room.build().withId(3).withObjects("Knife"))
                 .startFromRoom(3)
                 .collect("Knife");
 
@@ -39,16 +36,8 @@ class RouteFinderTest {
     @Test
     void build_a_route_with_two_rooms() {
         Input input = Input.build()
-                .withRoom(Room.build()
-                        .withId(1)
-                        .withName("Hallway")
-                        .withObjects("Plant")
-                        .withEast(2))
-                .withRoom(Room.build()
-                        .withId(2)
-                        .withName("Kitchen")
-                        .withObjects("Knife")
-                        .withWest(1))
+                .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1))
                 .startFromRoom(1)
                 .collect("Plant", "Knife");
 
