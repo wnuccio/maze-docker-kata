@@ -3,6 +3,8 @@ package subito.kata.java.room;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class Room {
     int id;
     String name;
@@ -41,7 +43,15 @@ public class Room {
         return objects.get(i);
     }
 
-    public void collectObjectsAndBuildRoute(Route route) {
+    public void collectObjectsAndBuildRoute(List<Room> rooms, Route route) {
         route.addRoom(this);
+        if (east != 0) {
+            Room eastRoom = rooms.stream()
+                    .filter(room -> room.id() == east)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException(format("No such start room: %s ", east)));
+
+            eastRoom.collectObjectsAndBuildRoute(rooms, route);
+        }
     }
 }

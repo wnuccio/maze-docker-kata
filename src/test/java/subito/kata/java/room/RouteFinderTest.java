@@ -1,6 +1,5 @@
 package subito.kata.java.room;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import subito.kata.java.inout.Input;
 
@@ -38,7 +37,7 @@ class RouteFinderTest {
         assertThat(route.rooms()).first().matches(room -> room.id() == 3);
     }
 
-    @Disabled
+
     @Test
     void build_a_route_with_two_rooms() {
         Input input = Input.build()

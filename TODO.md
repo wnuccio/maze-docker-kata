@@ -16,4 +16,6 @@ Completati
 - stanza unica
 
 Da fare
+- gli id north, east ecc.. in Room devono diventare Integer
+- spostare la logica duplicata di ricerca stanza per id da Rooom collectObjectsAndBuildRoute a Input
 - la lista di oggetti deve diventare un set?
