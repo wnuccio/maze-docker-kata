@@ -19,3 +19,6 @@ Da fare
 - differenziare i concetti di Input e Maze (segregando l'interfaccia, anche per disaccoppiare 
   il layer room da inout)
 - la lista di oggetti deve diventare un set?
+- valutare se disaccoppiare il modello json (input+room+namedobject) da quello di business (con nuove classi)
+  in tal caso le prime saranno semplici DTO
+- 
