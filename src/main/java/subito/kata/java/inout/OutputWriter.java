@@ -1,4 +1,6 @@
-package subito.kata.java;
+package subito.kata.java.inout;
+
+import subito.kata.java.room.Route;
 
 public class OutputWriter {
     public OutputWriter(String outputFile) {

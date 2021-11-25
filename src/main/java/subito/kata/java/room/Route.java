@@ -1,4 +1,4 @@
-package subito.kata.java;
+package subito.kata.java.room;
 
 import java.util.ArrayList;
 import java.util.List;

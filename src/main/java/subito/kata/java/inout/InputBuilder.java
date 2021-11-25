@@ -1,4 +1,6 @@
-package subito.kata.java;
+package subito.kata.java.inout;
+
+import subito.kata.java.room.Room;
 
 import static java.util.Collections.emptyList;
 

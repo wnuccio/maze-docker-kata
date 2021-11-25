@@ -1,4 +1,6 @@
-package subito.kata.java;
+package subito.kata.java.room;
+
+import subito.kata.java.inout.Input;
 
 public class RouteFinder {
     public Route findRouteFrom(Input input) {

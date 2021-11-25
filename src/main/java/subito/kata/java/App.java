@@ -1,5 +1,11 @@
 package subito.kata.java;
 
+import subito.kata.java.inout.Input;
+import subito.kata.java.inout.InputReader;
+import subito.kata.java.inout.OutputWriter;
+import subito.kata.java.room.Route;
+import subito.kata.java.room.RouteFinder;
+
 public class App {
     private InputReader inputReader;
     private RouteFinder routeFinder;

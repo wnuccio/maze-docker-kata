@@ -1,4 +1,4 @@
-package subito.kata.java;
+package subito.kata.java.inout;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
