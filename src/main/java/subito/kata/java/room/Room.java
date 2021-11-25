@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
-import static java.util.stream.Collectors.toList;
 
 public class Room {
     int id;
@@ -44,18 +43,18 @@ public class Room {
         return objects.get(i);
     }
 
-    public void collectObjectsAndBuildRoute(Maze input, Route route) {
-        if (allObjectsCollected(input, route)) return;
-        addThisRoomToRoute(input, route);
+    public void collectObjectsAndBuildRoute(Maze maze, Route route) {
+        if (route.allObjectsAreCollected(maze)) return;
+        addThisRoomToRoute(maze, route);
 
-        moveToAdjacentRoom(input, south, route);
-        moveToAdjacentRoom(input, west, route);
-        moveToAdjacentRoom(input, north, route);
-        moveToAdjacentRoom(input, east, route);
+        moveToAdjacentRoom(maze, south, route);
+        moveToAdjacentRoom(maze, west, route);
+        moveToAdjacentRoom(maze, north, route);
+        moveToAdjacentRoom(maze, east, route);
     }
 
-    private void addThisRoomToRoute(Maze input, Route route) {
-        if (allObjectsCollected(input, route)) return;
+    private void addThisRoomToRoute(Maze maze, Route route) {
+        if (route.allObjectsAreCollected(maze)) return;
         if (! route.isEmpty() && route.lastId() == this.id) return;
         route.addRoom(this);
     }
@@ -69,14 +68,4 @@ public class Room {
         addThisRoomToRoute(maze, route);
     }
 
-    private boolean allObjectsCollected(Maze maze, Route route) {
-        List<String> objectsToCollect = maze.objectsToCollect();
-        List<String> collectedObjects = route.traversedRooms()
-                .stream()
-                .flatMap(room -> room.objects().stream().map(NamedObject::name))
-                .distinct()
-                .collect(toList());
-
-        return collectedObjects.containsAll(objectsToCollect);
-    }
 }
