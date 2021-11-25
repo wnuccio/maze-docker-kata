@@ -9,8 +9,8 @@ public class Room {
     int id;
     String name;
     List<NamedObject> objects;
-    int east;
-    int west;
+    Integer east;
+    Integer west;
 
     Room() {
         objects = new ArrayList<>();
@@ -45,7 +45,7 @@ public class Room {
 
     public void collectObjectsAndBuildRoute(List<Room> rooms, Route route) {
         route.addRoom(this);
-        if (east != 0) {
+        if (east != null) {
             Room eastRoom = rooms.stream()
                     .filter(room -> room.id() == east)
                     .findFirst()
