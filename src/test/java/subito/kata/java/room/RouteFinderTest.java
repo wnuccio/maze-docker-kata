@@ -59,8 +59,30 @@ class RouteFinderTest {
         assertTraversedRoomsAre(route, 2, 1);
     }
 
+    @Test
+    /*
+        Rooms in a square:
+           3 -- 4
+           |    |
+           2 -- 1
+     */
+    void build_a_route_with_four_rooms_in_a_square() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(3).withEast(4).withSouth(2).withObjects("Obj3"))
+                .withRoom(Room.build().withId(4).withWest(3).withSouth(1).withObjects("Obj4"))
+                .withRoom(Room.build().withId(1).withNorth(4).withWest(2).withObjects("Obj1"))
+                .withRoom(Room.build().withId(2).withNorth(3).withEast(1).withObjects("Obj2"))
+                .startFromRoom(1)
+                .collect("Obj1", "Obj2", "Obj3", "Obj4");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 1, 2, 3, 4);
+    }
+
     private void assertTraversedRoomsAre(Route route, Integer... ids) {
         List<Integer> roomIds = route.traversedRooms().stream().map(Room::id).collect(Collectors.toList());
-        assertThat(roomIds).containsExactly(ids);
+        assertThat(route.traversedRooms()).first().matches(startRoom -> startRoom.id() == ids[0]);
+        assertThat(roomIds).containsExactlyInAnyOrder(ids);
     }
 }

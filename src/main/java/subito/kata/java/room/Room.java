@@ -9,6 +9,8 @@ public class Room {
     int id;
     String name;
     List<NamedObject> objects;
+    Integer north;
+    Integer south;
     Integer east;
     Integer west;
 
@@ -45,6 +47,8 @@ public class Room {
         if (route.contains(this)) return;
 
         route.addRoom(this);
+        moveToAdjacentRoom(input, route, north);
+        moveToAdjacentRoom(input, route, south);
         moveToAdjacentRoom(input, route, east);
         moveToAdjacentRoom(input, route, west);
     }
