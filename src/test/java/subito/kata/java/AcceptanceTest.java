@@ -1,6 +1,7 @@
 package subito.kata.java;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTest {
 
+    @Disabled
     @Test
     void collect_all_items_in_a_maze_example_1() throws IOException {
         Files.deleteIfExists(Paths.get("./output.txt"));
