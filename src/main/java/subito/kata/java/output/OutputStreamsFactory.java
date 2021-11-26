@@ -8,14 +8,14 @@ import java.io.PrintStream;
 public class OutputStreamsFactory {
 
     public OutputStreams createOutputStreams(Args parameters) {
-        String fileName = parameters.outputFile().orElse(null);
-        PrintStream optionalOutputStream = createPrintStream(fileName);
+        PrintStream optionalOutputStream = parameters.outputFile()
+                .map(this::createPrintStream)
+                .orElse(null);
+
         return new OutputStreams(System.out, optionalOutputStream);
     }
 
     private PrintStream createPrintStream(String fileName) {
-        if (fileName == null) return null;
-
         try {
             return new PrintStream(fileName);
 
