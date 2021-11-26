@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,13 +15,11 @@ public class AcceptanceTest {
 
     @Test
     void collect_all_items_in_a_maze_example_1() throws IOException {
-        Path tmp = Files.createTempFile("temp", "txt");
-        String outputFile = tmp.toString();
-        Files.deleteIfExists(Paths.get(outputFile));
+        Path tempFile = Files.createTempFile("temp", "txt");
 
-        App.main(new String[]{outputFile});
+        App.main(new String[]{tempFile.toString()});
 
-        List<String> lines = Files.readAllLines(Paths.get(outputFile));
+        List<String> lines = Files.readAllLines(tempFile);
         assertThat(lines.size()).isEqualTo(8);
         assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
         assertOutuptIs(lines.get(1), "------------------------------");
