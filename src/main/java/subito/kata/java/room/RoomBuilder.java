@@ -18,8 +18,8 @@ public class RoomBuilder {
         return this;
     }
 
-    public RoomBuilder withObjects(String objects) {
-        room.objects.add(new NamedObject(objects));
+    public RoomBuilder withObjects(String... objects) {
+        for (String o: objects) room.objects.add(new NamedObject(o));
         return this;
     }
 
