@@ -9,15 +9,12 @@ public class Args {
         this.args = args;
     }
 
+    public String inputFile() {
+        if (args.length < 1) throw new IllegalArgumentException("Missing 'input file' parameter;");
+        return args[0];
+    }
+
     public Optional<String> outputFile() {
-        return Optional.ofNullable(parameterAt(0));
-    }
-
-    public String inputFileOrElse(String defaultFile) {
-        return defaultFile;
-    }
-
-    private String parameterAt(int index) {
-        return args.length > index ? args[index] : null;
+        return Optional.ofNullable(args.length == 2 ? args[1] : null);
     }
 }

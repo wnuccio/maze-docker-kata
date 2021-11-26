@@ -23,7 +23,7 @@ public class AcceptanceTest {
     void collect_all_items_in_a_maze_example_1() throws IOException {
         Path tempFile = Files.createTempFile("temp", "txt");
 
-        App.main(new String[]{tempFile.toString()});
+        App.main(new String[]{"input.json", tempFile.toString()});
 
         List<String> lines = Files.readAllLines(tempFile);
         assertThat(lines.size()).isEqualTo(8);
