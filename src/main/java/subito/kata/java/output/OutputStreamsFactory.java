@@ -1,4 +1,4 @@
-package subito.kata.java.inout;
+package subito.kata.java.output;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

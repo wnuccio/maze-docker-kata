@@ -1,12 +1,12 @@
 package subito.kata.java;
 
-import subito.kata.java.inout.InputReader;
-import subito.kata.java.inout.OutputStreams;
-import subito.kata.java.inout.OutputStreamsFactory;
-import subito.kata.java.inout.OutputWriter;
-import subito.kata.java.room.Maze;
-import subito.kata.java.room.Route;
-import subito.kata.java.room.RouteFinder;
+import subito.kata.java.input.InputReader;
+import subito.kata.java.maze.Maze;
+import subito.kata.java.maze.Route;
+import subito.kata.java.maze.RouteFinder;
+import subito.kata.java.output.OutputStreams;
+import subito.kata.java.output.OutputStreamsFactory;
+import subito.kata.java.output.OutputWriter;
 
 public class App {
     private InputReader inputReader;

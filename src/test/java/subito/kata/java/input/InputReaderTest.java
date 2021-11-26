@@ -1,8 +1,8 @@
-package subito.kata.java.inout;
+package subito.kata.java.input;
 
 import org.junit.jupiter.api.Test;
-import subito.kata.java.room.NamedObject;
-import subito.kata.java.room.Room;
+import subito.kata.java.maze.NamedObject;
+import subito.kata.java.maze.Room;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

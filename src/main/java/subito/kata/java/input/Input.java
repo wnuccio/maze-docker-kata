@@ -1,7 +1,7 @@
-package subito.kata.java.inout;
+package subito.kata.java.input;
 
-import subito.kata.java.room.Maze;
-import subito.kata.java.room.Room;
+import subito.kata.java.maze.Maze;
+import subito.kata.java.maze.Room;
 
 import java.util.ArrayList;
 import java.util.List;

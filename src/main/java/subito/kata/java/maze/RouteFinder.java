@@ -1,4 +1,4 @@
-package subito.kata.java.room;
+package subito.kata.java.maze;
 
 public class RouteFinder {
     public Route findRouteFrom(Maze maze) {

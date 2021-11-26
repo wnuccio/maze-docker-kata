@@ -1,8 +1,8 @@
-package subito.kata.java.inout;
+package subito.kata.java.output;
 
-import subito.kata.java.room.NamedObject;
-import subito.kata.java.room.Room;
-import subito.kata.java.room.Route;
+import subito.kata.java.maze.NamedObject;
+import subito.kata.java.maze.Room;
+import subito.kata.java.maze.Route;
 
 import java.util.stream.Collectors;
 
