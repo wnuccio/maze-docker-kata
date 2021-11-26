@@ -30,7 +30,7 @@ public class AcceptanceTest {
      */
     void example_1() throws IOException {
 
-        App.main(new String[]{"input1.json", outputFileName()});
+        App.main(new String[]{"./src/test/resources/input1.json", outputFileName()});
 
         List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(8);
@@ -55,7 +55,7 @@ public class AcceptanceTest {
      */
     void example_2() throws IOException {
 
-        App.main(new String[]{"input2.json", outputFileName()});
+        App.main(new String[]{"./src/test/resources/input2.json", outputFileName()});
 
         List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(9);
