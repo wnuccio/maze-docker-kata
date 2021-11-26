@@ -1,25 +1,16 @@
-Casi di test
-- casi di errore (da non testare): labirinto malformed (stanze non collegate reciprocamente,
-  valutare se eseguire un check preliminare:
-  - stanze ben collegate in modo simmetrico,
-  - oggetti tutti diversi,
-  )
-
-Completati
-- labirinto vuoto
-- stanza unica
-- due stanze collegate con due oggetti
-- due stanze collegate partendo però dalla seconda
-- più stanze collegate, ciascuna con un oggetto
-- tre stanze collegate con solo le prime due aventi oggetti 
-  (e due oggetti da collezionare, si ferma alla seconda stanza)
-- stanze senza oggetti (si ferma comunque appena terminata la visita)
-
-Da fare
-- differenziare i concetti di Input e Maze (segregando l'interfaccia, anche per disaccoppiare 
-  il layer room da inout)
-- valutare di inlinare il RouteFinder dentro Room
-- valutare se disaccoppiare il modello json (input+room+namedobject) da quello di business (con nuove classi)
-  in tal caso le prime saranno semplici DTO
-- la lista di oggetti deve diventare un set?
-- 
+Precisazioni
+- si assume che il labrinto in input sia ben formato, cioè che ad esempio,
+  gli id delle stanze siano tutti diversi, le
+  stanze siano collegate reciprocamente in modo simmetrico,
+  che gli oggetti siano tutti diversi tra loro
+- l'algoritmo visita le stanze finché non ha trovato tutti gli oggetti specificati,
+  quindi potrebbe non visitare tutto il labirinto, e il labirinto potrebbe contenere 
+  più oggetti di quelli richiesti nel parametro "objects to collect";
+  tuttavia nel caso in cui non tutti gli oggetti richiesti siano presenti,
+  l'algoritmo termina ugualmente dopo aver raccolto tutto ciò che può
+- l'algoritmo produce, per il secondo caso "Esempio 2" un percorso diverso
+  ma ugualmente valido, che non comprende tutte le stanze ma raccoglie tutti gli oggetti specificati
+- il comando da eseguire è app input.json [optionalOutput]
+  dove 'input.json' è il path (relativo alla root) del file contenente il json di input,
+  mentre il secondo parametro, opzionale, è il file di output generato (di base l'output è su standard out)
+  
