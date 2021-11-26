@@ -13,6 +13,10 @@ public class Args {
         return Optional.ofNullable(parameterAt(0));
     }
 
+    public String inputFileOrElse(String defaultFile) {
+        return defaultFile;
+    }
+
     private String parameterAt(int index) {
         return args.length > index ? args[index] : null;
     }

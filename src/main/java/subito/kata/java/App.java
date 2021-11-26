@@ -20,7 +20,7 @@ public class App {
         OutputStreams outputStreams = new OutputStreamsFactory().createOutputStreams(parameters);
 
         App app = new App(
-                new InputReader("input.json"),
+                new InputReader(parameters.inputFileOrElse("input.json")),
                 new RouteFinder(),
                 new OutputWriter(outputStreams));
 
