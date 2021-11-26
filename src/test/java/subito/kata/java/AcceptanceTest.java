@@ -23,7 +23,7 @@ public class AcceptanceTest {
     void collect_all_items_in_a_maze_example_1() throws IOException {
         Path tempFile = Files.createTempFile("temp", "txt");
 
-        App.main(new String[]{"input.json", tempFile.toString()});
+        App.main(new String[]{"input1.json", tempFile.toString()});
 
         List<String> lines = Files.readAllLines(tempFile);
         assertThat(lines.size()).isEqualTo(8);
@@ -35,6 +35,33 @@ public class AcceptanceTest {
         assertOutuptIs(lines.get(5), "3",   "Kitchen",        "Knife");
         assertOutuptIs(lines.get(6), "2",   "Dining Room",    "None");
         assertOutuptIs(lines.get(7), "4",   "Sun Room",       "Potted Plant");
+    }
+
+    @Test
+    /*
+        Rooms:
+                        (5) -- (6)
+                         |      |
+                (3) -- (2) -- (4*)
+                        |      |
+                       (1) -- (7)
+     */
+    void collect_all_items_in_a_maze_example_2() throws IOException {
+        Path tempFile = Files.createTempFile("temp", "txt");
+
+        App.main(new String[]{"input2.json", tempFile.toString()});
+
+        List<String> lines = Files.readAllLines(tempFile);
+        assertThat(lines.size()).isEqualTo(9);
+        assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
+        assertOutuptIs(lines.get(1), "------------------------------");
+        assertOutuptIs(lines.get(2), "4",   "Sun Room",       "None");
+        assertOutuptIs(lines.get(3), "7",   "Living room",    "Potted Plant");
+        assertOutuptIs(lines.get(4), "1",   "Hallway",        "None");
+        assertOutuptIs(lines.get(5), "2",   "Dining Room",    "None");
+        assertOutuptIs(lines.get(6), "3",   "Kitchen",        "Knife");
+        assertOutuptIs(lines.get(7), "2",   "Dining Room",    "None");
+        assertOutuptIs(lines.get(8), "5",   "Bedroom",        "Pillow");
     }
 
     private void assertOutuptIs(String line, String... strings) {
