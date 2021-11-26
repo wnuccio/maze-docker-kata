@@ -1,21 +1,21 @@
 package subito.kata.java.maze;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static java.lang.String.format;
 
 public class Room {
     int id;
     String name;
-    List<NamedObject> objects;
+    Set<NamedObject> objects;
     Integer north;
     Integer south;
     Integer east;
     Integer west;
 
     Room() {
-        objects = new ArrayList<>();
+        objects = new HashSet<>();
     }
 
     public static RoomBuilder build() {
@@ -30,17 +30,13 @@ public class Room {
         return name;
     }
 
-    public List<NamedObject> objects() {
+    public Set<NamedObject> objects() {
         return objects;
     }
 
     @Override
     public String toString() {
         return format("Room[%s]", id);
-    }
-
-    public NamedObject getObject(int i) {
-        return objects.get(i);
     }
 
     public void collectObjectsAndBuildRoute(Maze maze, Route route) {

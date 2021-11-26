@@ -4,7 +4,9 @@ import subito.kata.java.maze.Maze;
 import subito.kata.java.maze.Room;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.String.format;
 
@@ -12,12 +14,12 @@ public class Input implements Maze {
 
     List<Room> rooms;
     Integer startRoomId;
-    List<String> objectsToCollect;
+    Set<String> objectsToCollect;
 
     Input() {
         rooms = new ArrayList<>();
         startRoomId = null;
-        objectsToCollect = new ArrayList<>();
+        objectsToCollect = new HashSet<>();
     }
 
     public static InputBuilder build() {
@@ -33,7 +35,7 @@ public class Input implements Maze {
     }
 
     @Override
-    public List<String> objectsToCollect() {
+    public Set<String> objectsToCollect() {
         return objectsToCollect;
     }
 

@@ -1,10 +1,10 @@
 package subito.kata.java.maze;
 
-import java.util.List;
+import java.util.Set;
 
 public interface Maze {
 
-    List<String> objectsToCollect();
+    Set<String> objectsToCollect();
 
     Room startRoom();
 

@@ -1,7 +1,6 @@
 package subito.kata.java.input;
 
 import org.junit.jupiter.api.Test;
-import subito.kata.java.maze.NamedObject;
 import subito.kata.java.maze.Room;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +21,8 @@ class InputReaderTest {
         assertThat(room.name()).isEqualTo("A room");
         assertThat(room.objects()).hasSize(1);
 
-        NamedObject object = room.getObject(0);
-        assertThat(object.name()).isEqualTo("An object");
+        assertThat(room.objects()).hasSize(1);
+        assertThat(room.objects()).first().matches(obj -> obj.name().equals("An object"));
+
     }
 }
