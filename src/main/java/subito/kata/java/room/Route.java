@@ -29,7 +29,7 @@ public class Route {
         return rooms.toString();
     }
 
-    public boolean allObjectsAreCollected(Maze maze) {
+    public boolean containsAllRequiredObjectsFrom(Maze maze) {
         return collectedObjects().containsAll(maze.objectsToCollect());
     }
 

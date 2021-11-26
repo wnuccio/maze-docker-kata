@@ -27,9 +27,9 @@ class RouteTest {
         route.addRoom(Room.build().withId(2).withObjects("Desk").build());
 
         Maze maze1 = Input.build().collect("Chair", "Desk");
-        assertThat(route.allObjectsAreCollected(maze1)).isTrue();
+        assertThat(route.containsAllRequiredObjectsFrom(maze1)).isTrue();
 
         Maze maze2 = Input.build().collect("Chair", "Desk", "???");
-        assertThat(route.allObjectsAreCollected(maze2)).isFalse();
+        assertThat(route.containsAllRequiredObjectsFrom(maze2)).isFalse();
     }
 }
