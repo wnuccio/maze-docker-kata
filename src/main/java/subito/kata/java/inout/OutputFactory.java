@@ -5,9 +5,9 @@ import java.io.PrintStream;
 
 public class OutputFactory {
 
-    public Output createOutput(String[] args) {
+    public OutputStream createOutput(String[] args) {
         PrintStream optionalOutput = args.length > 0 ? outputStream(args[0]) : null;
-        return new Output(System.out, optionalOutput);
+        return new OutputStream(System.out, optionalOutput);
     }
 
     private PrintStream outputStream(String fileName) {

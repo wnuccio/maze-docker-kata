@@ -2,11 +2,11 @@ package subito.kata.java.inout;
 
 import java.io.PrintStream;
 
-public class Output {
+public class OutputStream {
     private PrintStream outStream1;
     private PrintStream outStream2;
 
-    public Output(PrintStream outStream1, PrintStream outputFile) {
+    public OutputStream(PrintStream outStream1, PrintStream outputFile) {
         this.outStream1 = outStream1;
         this.outStream2 = outputFile;
     }

@@ -9,20 +9,20 @@ import java.util.stream.Collectors;
 import static java.lang.String.valueOf;
 
 public class OutputWriter {
-    private final Output output;
+    private final OutputStream outputStream;
 
-    public OutputWriter(Output output) {
-        this.output = output;
+    public OutputWriter(OutputStream outputStream) {
+        this.outputStream = outputStream;
     }
 
     public void writeOutput(Route route) {
         printFormatted("ID", "Room", "Object collected");
-        output.println("------------------------------------");
+        outputStream.println("------------------------------------");
         route.traversedRooms().forEach(this::printRoom);
     }
 
     private void printFormatted(String id, String room, String objectsCollected) {
-        output.printf("%-4s %-15s %-9s%n", id, room, objectsCollected);
+        outputStream.printf("%-4s %-15s %-9s%n", id, room, objectsCollected);
     }
 
     private void printRoom(Room room) {
