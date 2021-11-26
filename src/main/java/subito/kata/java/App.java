@@ -1,5 +1,6 @@
 package subito.kata.java;
 
+import subito.kata.java.input.Args;
 import subito.kata.java.input.InputReader;
 import subito.kata.java.maze.Maze;
 import subito.kata.java.maze.Route;
@@ -14,7 +15,9 @@ public class App {
     private OutputWriter outputWriter;
 
     public static void main(String[] args) {
-        OutputStreams outputStreams = new OutputStreamsFactory().createOutputStreams(args);
+        Args parameters = new Args(args);
+
+        OutputStreams outputStreams = new OutputStreamsFactory().createOutputStreams(parameters);
 
         App app = new App(
                 new InputReader("input.json"),
