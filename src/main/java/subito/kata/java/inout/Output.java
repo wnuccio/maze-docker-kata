@@ -13,11 +13,11 @@ public class Output {
 
     public void println(String s) {
         outStream1.println(s);
-        outStream2.println(s);
+        if (outStream2 != null) outStream2.println(s);
     }
 
     public void printf(String s, String... args) {
         outStream1.printf(s, (Object[]) args);
-        outStream2.printf(s, (Object[]) args);
+        if (outStream2 != null) outStream2.printf(s, (Object[]) args);
     }
 }

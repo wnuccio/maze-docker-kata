@@ -15,9 +15,8 @@ public class App {
     private RouteFinder routeFinder;
     private OutputWriter outputWriter;
 
-    public static void main(String[] strings) {
-        PrintStream outputFile = outputStream("output.txt");
-        Output output = new Output(System.out, outputFile);
+    public static void main(String[] args) {
+        Output output = createOutput(args);
 
         App app = new App(
                 new InputReader("input.json"),
@@ -25,6 +24,11 @@ public class App {
                 new OutputWriter(output));
 
         app.execute();
+    }
+
+    private static Output createOutput(String[] args) {
+        PrintStream optionalOutput = args.length > 0 ? outputStream(args[0]) : null;
+        return new Output(System.out, optionalOutput);
     }
 
     private static PrintStream outputStream(String fileName) {

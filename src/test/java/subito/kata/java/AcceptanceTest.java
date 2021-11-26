@@ -15,14 +15,13 @@ public class AcceptanceTest {
 
     @Test
     void collect_all_items_in_a_maze_example_1() throws IOException {
-        Files.deleteIfExists(Paths.get("./output.txt"));
+        String outputFile = "./output.txt";
+        Files.deleteIfExists(Paths.get(outputFile));
 
-        App.main(new String[]{});
+        App.main(new String[]{outputFile});
 
-        List<String> lines = Files.readAllLines(Paths.get("./output.txt"));
-
+        List<String> lines = Files.readAllLines(Paths.get(outputFile));
         assertThat(lines.size()).isEqualTo(8);
-
         assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
         assertOutuptIs(lines.get(1), "------------------------------");
         assertOutuptIs(lines.get(2), "2",   "Dining Room",    "None");
