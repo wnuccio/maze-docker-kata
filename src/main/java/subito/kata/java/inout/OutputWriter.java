@@ -4,36 +4,9 @@ import subito.kata.java.room.NamedObject;
 import subito.kata.java.room.Room;
 import subito.kata.java.room.Route;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.stream.Collectors;
 
 import static java.lang.String.valueOf;
-
-class Output {
-    private PrintStream out;
-    private PrintStream outTemp;
-
-    Output(PrintStream out, String outputFile) {
-        this.out = out;
-        try {
-            outTemp = new PrintStream(outputFile);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void println(String s) {
-        out.println(s);
-        outTemp.println(s);
-    }
-
-    public void printf(String s, String... args) {
-        out.printf(s, args);
-        outTemp.printf(s, args);
-    }
-}
 
 public class OutputWriter {
     private final Output output;
