@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,8 @@ public class AcceptanceTest {
 
     @Test
     void collect_all_items_in_a_maze_example_1() throws IOException {
-        String outputFile = "./output.txt";
+        Path tmp = Files.createTempFile("temp", "txt");
+        String outputFile = tmp.toString();
         Files.deleteIfExists(Paths.get(outputFile));
 
         App.main(new String[]{outputFile});
