@@ -125,6 +125,21 @@ class RouteFinderTest {
     }
 
     @Test
+    // Rooms: (1) -- (2*) -- (3)
+    void stop_when_all_rooms_are_traversed_even_if_object_list_is_uncomplete() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withEast(2)) // empty room
+                .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1).withEast(3))
+                .withRoom(Room.build().withId(3).withObjects("Plant").withWest(2))
+                .startFromRoom(2)
+                .collect("Plant", "Knife", "???");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 2, 1, 2, 3, 2);
+    }
+
+    @Test
     // Rooms: (1*) -- (2) -- (3)
     void traverse_irrilevant_rooms_until_object_list_is_complete() {
         Input input = Input.build()
