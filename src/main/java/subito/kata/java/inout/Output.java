@@ -3,11 +3,11 @@ package subito.kata.java.inout;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-class Output {
+public class Output {
     private PrintStream out;
     private PrintStream outTemp;
 
-    Output(PrintStream out, String outputFile) {
+    public Output(PrintStream out, String outputFile) {
         this.out = out;
         try {
             outTemp = new PrintStream(outputFile);

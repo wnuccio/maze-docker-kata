@@ -11,8 +11,8 @@ import static java.lang.String.valueOf;
 public class OutputWriter {
     private final Output output;
 
-    public OutputWriter(String outputFile) {
-        this.output = new Output(System.out, outputFile);
+    public OutputWriter(Output output) {
+        this.output = output;
     }
 
     public void writeOutput(Route route) {

@@ -1,6 +1,7 @@
 package subito.kata.java;
 
 import subito.kata.java.inout.InputReader;
+import subito.kata.java.inout.Output;
 import subito.kata.java.inout.OutputWriter;
 import subito.kata.java.room.Maze;
 import subito.kata.java.room.Route;
@@ -12,10 +13,12 @@ public class App {
     private OutputWriter outputWriter;
 
     public static void main(String[] strings) {
+        Output output = new Output(System.out, "output.txt");
+
         App app = new App(
                 new InputReader("input.json"),
                 new RouteFinder(),
-                new OutputWriter("output.txt"));
+                new OutputWriter(output));
 
         app.execute();
     }
