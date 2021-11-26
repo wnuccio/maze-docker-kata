@@ -1,8 +1,8 @@
 package subito.kata.java;
 
 import subito.kata.java.inout.InputReader;
-import subito.kata.java.inout.OutputStream;
-import subito.kata.java.inout.OutputStreamFactory;
+import subito.kata.java.inout.OutputStreams;
+import subito.kata.java.inout.OutputStreamsFactory;
 import subito.kata.java.inout.OutputWriter;
 import subito.kata.java.room.Maze;
 import subito.kata.java.room.Route;
@@ -14,12 +14,12 @@ public class App {
     private OutputWriter outputWriter;
 
     public static void main(String[] args) {
-        OutputStream outputStream = new OutputStreamFactory().createOutputStream(args);
+        OutputStreams outputStreams = new OutputStreamsFactory().createOutputStreams(args);
 
         App app = new App(
                 new InputReader("input.json"),
                 new RouteFinder(),
-                new OutputWriter(outputStream));
+                new OutputWriter(outputStreams));
 
         app.execute();
     }
