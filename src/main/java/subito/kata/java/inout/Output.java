@@ -1,29 +1,23 @@
 package subito.kata.java.inout;
 
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public class Output {
-    private PrintStream out;
-    private PrintStream outTemp;
+    private PrintStream outStream1;
+    private PrintStream outStream2;
 
-    public Output(PrintStream out, String outputFile) {
-        this.out = out;
-        try {
-            outTemp = new PrintStream(outputFile);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    public Output(PrintStream outStream1, PrintStream outputFile) {
+        this.outStream1 = outStream1;
+        this.outStream2 = outputFile;
     }
 
     public void println(String s) {
-        out.println(s);
-        outTemp.println(s);
+        outStream1.println(s);
+        outStream2.println(s);
     }
 
     public void printf(String s, String... args) {
-        out.printf(s, (Object[]) args);
-        outTemp.printf(s, (Object[]) args);
+        outStream1.printf(s, (Object[]) args);
+        outStream2.printf(s, (Object[]) args);
     }
 }
