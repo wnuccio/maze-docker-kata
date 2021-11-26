@@ -17,12 +17,12 @@ public class OutputWriter {
 
     public void writeOutput(Route route) {
         printFormatted("ID", "Room", "Object collected");
-        outputStreams.println("------------------------------------");
+        outputStreams.println("-------------------------------------");
         route.traversedRooms().forEach(this::printRoom);
     }
 
     private void printFormatted(String id, String room, String objectsCollected) {
-        outputStreams.printf("%-4s %-15s %-9s%n", id, room, objectsCollected);
+        outputStreams.printf("%-4s %-15s %s %n", id, room, objectsCollected);
     }
 
     private void printRoom(Room room) {
