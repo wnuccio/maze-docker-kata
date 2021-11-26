@@ -1,5 +1,7 @@
 package subito.kata.java.input;
 
+import java.util.Optional;
+
 public class Args {
     private String[] args;
 
@@ -7,7 +9,11 @@ public class Args {
         this.args = args;
     }
 
-    public String outputFile() {
-        return args.length > 0 ? args[0] : null;
+    public Optional<String> outputFile() {
+        return Optional.ofNullable(parameterAt(0));
+    }
+
+    private String parameterAt(int index) {
+        return args.length > index ? args[index] : null;
     }
 }

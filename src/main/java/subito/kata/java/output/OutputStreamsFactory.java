@@ -8,7 +8,8 @@ import java.io.PrintStream;
 public class OutputStreamsFactory {
 
     public OutputStreams createOutputStreams(Args parameters) {
-        PrintStream optionalOutputStream = createPrintStream(parameters.outputFile());
+        String fileName = parameters.outputFile().orElse(null);
+        PrintStream optionalOutputStream = createPrintStream(fileName);
         return new OutputStreams(System.out, optionalOutputStream);
     }
 
