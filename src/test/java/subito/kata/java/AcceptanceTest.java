@@ -14,6 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AcceptanceTest {
 
     @Test
+    /*
+        Rooms:
+                (3) -- (2*) -- (4)
+                        |
+                       (1)
+     */
     void collect_all_items_in_a_maze_example_1() throws IOException {
         Path tempFile = Files.createTempFile("temp", "txt");
 
