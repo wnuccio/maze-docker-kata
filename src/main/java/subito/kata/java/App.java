@@ -17,7 +17,8 @@ public class App {
     public static void main(String[] args) {
         Args parameters = new Args(args);
 
-        OutputStreams outputStreams = new OutputStreamsFactory().createOutputStreams(parameters);
+        OutputStreams outputStreams = new OutputStreamsFactory()
+                .createOutputStreams(parameters.outputFile());
 
         App app = new App(
                 new InputReader(parameters.inputFile()),

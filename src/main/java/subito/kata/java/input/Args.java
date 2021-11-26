@@ -1,7 +1,5 @@
 package subito.kata.java.input;
 
-import java.util.Optional;
-
 public class Args {
     private String[] args;
 
@@ -10,11 +8,11 @@ public class Args {
     }
 
     public String inputFile() {
-        if (args.length < 1) throw new IllegalArgumentException("Missing 'input file' parameter;");
+        if (args.length < 1) throw new IllegalArgumentException("Missing first parameter: 'input file' ;");
         return args[0];
     }
 
-    public Optional<String> outputFile() {
-        return Optional.ofNullable(args.length == 2 ? args[1] : null);
+    public String outputFile() {
+        return args.length == 2 ? args[1] : "";
     }
 }
