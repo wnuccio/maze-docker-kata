@@ -49,7 +49,7 @@ class RouteFinderTest {
 
     @Test
     // Rooms: (1) -- (2*)
-    void build_a_route_with_two_rooms_and_start_from_the_second() {
+    void build_a_route_with_two_rooms_starting_from_the_second() {
         Input input = Input.build()
                 .withRoom(Room.build().withId(1).withObjects("Plant").withEast(2))
                 .withRoom(Room.build().withId(2).withObjects("Knife").withWest(1))
