@@ -1,6 +1,7 @@
 package subito.kata.java;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +14,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTest {
 
+    private Path temporaryOutputFile;
+
+    @BeforeEach
+    void setUp() throws IOException {
+        temporaryOutputFile = Files.createTempFile("temp", "txt");
+    }
+
     @Test
     /*
         Rooms:
@@ -20,12 +28,11 @@ public class AcceptanceTest {
                         |
                        (1)
      */
-    void collect_all_items_in_a_maze_example_1() throws IOException {
-        Path tempFile = Files.createTempFile("temp", "txt");
+    void example_1() throws IOException {
 
-        App.main(new String[]{"input1.json", tempFile.toString()});
+        App.main(new String[]{"input1.json", outputFileName()});
 
-        List<String> lines = Files.readAllLines(tempFile);
+        List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(8);
         assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
         assertOutuptIs(lines.get(1), "------------------------------");
@@ -46,12 +53,11 @@ public class AcceptanceTest {
                         |      |
                        (1) -- (7)
      */
-    void collect_all_items_in_a_maze_example_2() throws IOException {
-        Path tempFile = Files.createTempFile("temp", "txt");
+    void example_2() throws IOException {
 
-        App.main(new String[]{"input2.json", tempFile.toString()});
+        App.main(new String[]{"input2.json", outputFileName()});
 
-        List<String> lines = Files.readAllLines(tempFile);
+        List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(9);
         assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
         assertOutuptIs(lines.get(1), "------------------------------");
@@ -62,6 +68,14 @@ public class AcceptanceTest {
         assertOutuptIs(lines.get(6), "3",   "Kitchen",        "Knife");
         assertOutuptIs(lines.get(7), "2",   "Dining Room",    "None");
         assertOutuptIs(lines.get(8), "5",   "Bedroom",        "Pillow");
+    }
+
+    private String outputFileName() {
+        return temporaryOutputFile.toString();
+    }
+
+    private List<String> outputFileLines() throws IOException {
+        return Files.readAllLines(temporaryOutputFile);
     }
 
     private void assertOutuptIs(String line, String... strings) {
