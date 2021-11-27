@@ -6,6 +6,8 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import static java.lang.String.format;
+
 public class InputReader {
     private String inputFile;
 
@@ -19,7 +21,8 @@ public class InputReader {
             return new Gson().fromJson(jsonReader, Input.class);
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            String message = format("Input file missing: '%s'.", inputFile);
+            throw new RuntimeException(message);
         }
     }
 }
