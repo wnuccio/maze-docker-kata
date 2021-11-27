@@ -8,7 +8,7 @@ public class Args {
     }
 
     public String inputFile() {
-        if (args.length < 1) throw new IllegalArgumentException("Missing first parameter: 'input file' ;");
+        if (args.length < 1) return "input.json";
         return args[0];
     }
 
