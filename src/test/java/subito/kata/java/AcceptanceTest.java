@@ -34,14 +34,14 @@ public class AcceptanceTest {
 
         List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(8);
-        assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
-        assertOutuptIs(lines.get(1), "------------------------------");
-        assertOutuptIs(lines.get(2), "2",   "Dining Room",    "None");
-        assertOutuptIs(lines.get(3), "1",   "Hallway",        "None");
-        assertOutuptIs(lines.get(4), "2",   "Dining Room",    "None");
-        assertOutuptIs(lines.get(5), "3",   "Kitchen",        "Knife");
-        assertOutuptIs(lines.get(6), "2",   "Dining Room",    "None");
-        assertOutuptIs(lines.get(7), "4",   "Sun Room",       "Potted Plant");
+        assertOutputIs(lines.get(0), "ID",  "Room",           "Object collected");
+        assertOutputIs(lines.get(1), "------------------------------");
+        assertOutputIs(lines.get(2), "2",   "Dining Room",    "None");
+        assertOutputIs(lines.get(3), "1",   "Hallway",        "None");
+        assertOutputIs(lines.get(4), "2",   "Dining Room",    "None");
+        assertOutputIs(lines.get(5), "3",   "Kitchen",        "Knife");
+        assertOutputIs(lines.get(6), "2",   "Dining Room",    "None");
+        assertOutputIs(lines.get(7), "4",   "Sun Room",       "Potted Plant");
     }
 
     @Test
@@ -59,15 +59,15 @@ public class AcceptanceTest {
 
         List<String> lines = outputFileLines();
         assertThat(lines.size()).isEqualTo(9);
-        assertOutuptIs(lines.get(0), "ID",  "Room",           "Object collected");
-        assertOutuptIs(lines.get(1), "------------------------------");
-        assertOutuptIs(lines.get(2), "4",   "Sun Room",       "None");
-        assertOutuptIs(lines.get(3), "7",   "Living room",    "Potted Plant");
-        assertOutuptIs(lines.get(4), "1",   "Hallway",        "None");
-        assertOutuptIs(lines.get(5), "2",   "Dining Room",    "None");
-        assertOutuptIs(lines.get(6), "3",   "Kitchen",        "Knife");
-        assertOutuptIs(lines.get(7), "2",   "Dining Room",    "None");
-        assertOutuptIs(lines.get(8), "5",   "Bedroom",        "Pillow");
+        assertOutputIs(lines.get(0), "ID",  "Room",           "Object collected");
+        assertOutputIs(lines.get(1), "------------------------------");
+        assertOutputIs(lines.get(2), "4",   "Sun Room",       "None");
+        assertOutputIs(lines.get(3), "7",   "Living room",    "Potted Plant");
+        assertOutputIs(lines.get(4), "1",   "Hallway",        "None");
+        assertOutputIs(lines.get(5), "2",   "Dining Room",    "None");
+        assertOutputIs(lines.get(6), "3",   "Kitchen",        "Knife");
+        assertOutputIs(lines.get(7), "2",   "Dining Room",    "None");
+        assertOutputIs(lines.get(8), "5",   "Bedroom",        "Pillow");
     }
 
     private String temporaryOutputFile() {
@@ -78,7 +78,7 @@ public class AcceptanceTest {
         return Files.readAllLines(temporaryOutputFile);
     }
 
-    private void assertOutuptIs(String line, String... strings) {
+    private void assertOutputIs(String line, String... strings) {
         Arrays.asList(strings).forEach(s -> Assertions.assertThat(line).contains(s));
     }
 }
