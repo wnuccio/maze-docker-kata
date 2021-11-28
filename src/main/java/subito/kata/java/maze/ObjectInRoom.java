@@ -2,10 +2,10 @@ package subito.kata.java.maze;
 
 import java.util.Objects;
 
-public class NamedObject {
+public class ObjectInRoom {
     private String name;
 
-    public NamedObject(String name) {
+    public ObjectInRoom(String name) {
         this.name = name;
     }
 
@@ -17,7 +17,7 @@ public class NamedObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NamedObject that = (NamedObject) o;
+        ObjectInRoom that = (ObjectInRoom) o;
         return Objects.equals(name, that.name);
     }
 

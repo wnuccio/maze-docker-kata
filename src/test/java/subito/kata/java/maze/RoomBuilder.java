@@ -19,7 +19,7 @@ public class RoomBuilder {
     }
 
     public RoomBuilder withObjects(String... objects) {
-        for (String o: objects) room.objects.add(new NamedObject(o));
+        for (String o: objects) room.objects.add(new ObjectInRoom(o));
         return this;
     }
 

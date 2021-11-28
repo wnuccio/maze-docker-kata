@@ -9,7 +9,7 @@ import static java.lang.String.format;
 public class Room {
     int id;
     String name;
-    Set<NamedObject> objects;
+    Set<ObjectInRoom> objects;
     Integer north;
     Integer south;
     Integer east;
@@ -28,7 +28,7 @@ public class Room {
     }
 
     public Set<String> objects() {
-        return objects.stream().map(NamedObject::name).collect(Collectors.toSet());
+        return objects.stream().map(ObjectInRoom::name).collect(Collectors.toSet());
     }
 
     @Override
