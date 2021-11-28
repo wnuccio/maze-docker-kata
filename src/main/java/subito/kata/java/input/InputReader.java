@@ -2,6 +2,7 @@ package subito.kata.java.input;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import subito.kata.java.maze.Maze;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,10 +16,10 @@ public class InputReader {
         this.inputFile = inputFile;
     }
 
-    public Input readInput() {
+    public Maze readInput() {
         try {
             JsonReader jsonReader = new JsonReader(new FileReader(inputFile));
-            return new Gson().fromJson(jsonReader, Input.class);
+            return new Gson().fromJson(jsonReader, Maze.class);
 
         } catch (FileNotFoundException e) {
             String message = format("Input file missing: '%s'.", inputFile);

@@ -1,14 +1,48 @@
 package subito.kata.java.maze;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public interface Maze {
+import static java.lang.String.format;
 
-    Set<String> objectsToCollect();
+public class Maze {
 
-    Room startRoom();
+    List<Room> rooms;
+    Integer startRoomId;
+    Set<String> objectsToCollect;
 
-    boolean hasNoRoom();
+    Maze() {
+        rooms = new ArrayList<>();
+        startRoomId = null;
+        objectsToCollect = new HashSet<>();
+    }
 
-    Room findRoomById(int id);
+    public List<Room> rooms() {
+        return rooms;
+    }
+
+    public Integer startRoomId() {
+        return startRoomId;
+    }
+
+    public Set<String> objectsToCollect() {
+        return objectsToCollect;
+    }
+
+    public Room startRoom() {
+        return findRoomById(startRoomId);
+    }
+
+    public boolean hasNoRoom() {
+        return rooms().isEmpty();
+    }
+
+    public Room findRoomById(int id) {
+        return rooms.stream()
+                .filter(room -> room.id() == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException(format("No such room: %s ", id)));
+    }
 }
