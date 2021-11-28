@@ -1,6 +1,7 @@
 package subito.kata.java.maze;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -29,8 +30,8 @@ public class Route {
         return rooms.toString();
     }
 
-    public boolean containsAllRequiredObjectsFrom(Maze maze) {
-        return collectedObjects().containsAll(maze.objectsToCollect());
+    public boolean containsAllObjects(Collection<String> objectsToCollect) {
+        return collectedObjects().containsAll(objectsToCollect);
     }
 
     private List<String> collectedObjects() {
