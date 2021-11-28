@@ -3,11 +3,10 @@ package subito.kata.java.output;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-public class OutputStreamsFactory {
+public class OutputStreamFactory {
 
-    public OutputStreams createOutputStreams(String outputFile) {
-        PrintStream outputStream = outputFile.isEmpty() ? System.out : createPrintStream(outputFile);
-        return new OutputStreams(outputStream);
+    public PrintStream createOutputStream(String outputFile) {
+        return outputFile.isEmpty() ? System.out : createPrintStream(outputFile);
     }
 
     private PrintStream createPrintStream(String fileName) {

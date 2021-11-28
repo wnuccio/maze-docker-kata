@@ -5,9 +5,10 @@ import subito.kata.java.input.InputReader;
 import subito.kata.java.maze.Maze;
 import subito.kata.java.maze.Route;
 import subito.kata.java.maze.RouteFinder;
-import subito.kata.java.output.OutputStreams;
-import subito.kata.java.output.OutputStreamsFactory;
+import subito.kata.java.output.OutputStreamFactory;
 import subito.kata.java.output.OutputWriter;
+
+import java.io.PrintStream;
 
 public class App {
     private InputReader inputReader;
@@ -17,13 +18,13 @@ public class App {
     public static void main(String[] args) {
         Args parameters = new Args(args);
 
-        OutputStreams outputStreams = new OutputStreamsFactory()
-                .createOutputStreams(parameters.outputFile());
+        PrintStream outputStream = new OutputStreamFactory()
+                .createOutputStream(parameters.outputFile());
 
         App app = new App(
                 new InputReader(parameters.inputFile()),
                 new RouteFinder(),
-                new OutputWriter(outputStreams));
+                new OutputWriter(outputStream));
 
         app.execute();
     }
