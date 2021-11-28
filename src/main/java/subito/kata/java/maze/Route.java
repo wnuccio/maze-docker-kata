@@ -37,7 +37,8 @@ public class Route {
     private List<String> collectedObjects() {
         return traversedRooms()
                 .stream()
-                .flatMap(room -> room.objects().stream().map(NamedObject::name))
+                .flatMap(room -> room.objects().stream())
+                .map(NamedObject::name)
                 .distinct()
                 .collect(toList());
     }
