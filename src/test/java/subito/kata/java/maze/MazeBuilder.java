@@ -2,7 +2,7 @@ package subito.kata.java.maze;
 
 import java.util.Arrays;
 
-public class InputBuilder {
+public class MazeBuilder {
 
     private final Maze maze;
 
@@ -10,20 +10,20 @@ public class InputBuilder {
         return new Maze();
     }
 
-    public InputBuilder() {
+    public MazeBuilder() {
         this.maze = new Maze();
     }
 
-    public InputBuilder withRoom(Room room) {
+    public MazeBuilder withRoom(Room room) {
         maze.rooms.add(room);
         return this;
     }
 
-    public InputBuilder withRoom(RoomBuilder roomBuilder) {
+    public MazeBuilder withRoom(RoomBuilder roomBuilder) {
         return withRoom(roomBuilder.build());
     }
 
-    public InputBuilder startFromRoom(Integer i) {
+    public MazeBuilder startFromRoom(Integer i) {
         maze.startRoomId = i;
         return this;
     }

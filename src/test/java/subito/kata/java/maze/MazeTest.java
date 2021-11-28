@@ -8,7 +8,7 @@ class MazeTest {
 
     @Test
     void find_a_room_by_id() {
-        Maze maze = new InputBuilder()
+        Maze maze = new MazeBuilder()
                 .withRoom(new RoomBuilder().withId(1).withName("room1").build())
                 .withRoom(new RoomBuilder().withId(2).withName("room2").build())
                 .withRoom(new RoomBuilder().withId(3).withName("room3").build())
