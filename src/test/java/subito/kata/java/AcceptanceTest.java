@@ -1,6 +1,7 @@
 package subito.kata.java;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,11 @@ public class AcceptanceTest {
     @BeforeEach
     void setUp() throws IOException {
         temporaryOutputFile = Files.createTempFile("temp", "txt");
+    }
+
+    @AfterEach
+    void tearDown() throws IOException {
+        Files.deleteIfExists(temporaryOutputFile);
     }
 
     @Test
