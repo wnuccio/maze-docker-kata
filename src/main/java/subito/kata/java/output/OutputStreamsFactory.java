@@ -6,10 +6,8 @@ import java.io.PrintStream;
 public class OutputStreamsFactory {
 
     public OutputStreams createOutputStreams(String outputFile) {
-        PrintStream optionalOutputStream =
-                outputFile.isEmpty() ? null : createPrintStream(outputFile);
-
-        return new OutputStreams(System.out, optionalOutputStream);
+        PrintStream outputStream = outputFile.isEmpty() ? System.out : createPrintStream(outputFile);
+        return new OutputStreams(outputStream);
     }
 
     private PrintStream createPrintStream(String fileName) {
