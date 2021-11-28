@@ -21,9 +21,7 @@ class InputReaderTest {
         assertThat(room.id()).isEqualTo(1);
         assertThat(room.name()).isEqualTo("A room");
         assertThat(room.objects()).hasSize(1);
-
-        assertThat(room.objects()).hasSize(1);
-        assertThat(room.objects()).first().matches(obj -> obj.name().equals("An object"));
+        assertThat(room.objects()).first().isEqualTo("An object");
 
     }
 }

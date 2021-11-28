@@ -2,6 +2,7 @@ package subito.kata.java.maze;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
@@ -26,8 +27,8 @@ public class Room {
         return name;
     }
 
-    public Set<NamedObject> objects() {
-        return objects;
+    public Set<String> objects() {
+        return objects.stream().map(NamedObject::name).collect(Collectors.toSet());
     }
 
     @Override

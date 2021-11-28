@@ -1,11 +1,9 @@
 package subito.kata.java.output;
 
-import subito.kata.java.maze.NamedObject;
 import subito.kata.java.maze.Room;
 import subito.kata.java.maze.Route;
 
 import java.io.PrintStream;
-import java.util.stream.Collectors;
 
 import static java.lang.String.valueOf;
 
@@ -33,13 +31,7 @@ public class OutputWriter {
 
     private String objectString(Room room) {
         if (room.objects().isEmpty()) return "None";
-        return room.objects()
-                .stream()
-                .map(this::objectName)
-                .collect(Collectors.joining(" "));
-    }
 
-    private String objectName(NamedObject namedObject) {
-        return namedObject.name() == null || namedObject.name().isEmpty() ? "None" : namedObject.name();
+        return String.join(" ", room.objects());
     }
 }
