@@ -18,12 +18,15 @@ public class InputReader {
 
     public Maze readInput() {
         try {
-            JsonReader jsonReader = new JsonReader(new FileReader(inputFile));
-            return new Gson().fromJson(jsonReader, Maze.class);
+            return readMazeFromInputFile();
 
         } catch (FileNotFoundException e) {
-            String message = format("Input file missing: '%s'.", inputFile);
-            throw new RuntimeException(message);
+            throw new RuntimeException(format("Input file missing: '%s'.", inputFile));
         }
+    }
+
+    private Maze readMazeFromInputFile() throws FileNotFoundException {
+        JsonReader jsonReader = new JsonReader(new FileReader(inputFile));
+        return new Gson().fromJson(jsonReader, Maze.class);
     }
 }

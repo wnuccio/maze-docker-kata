@@ -36,7 +36,7 @@ public class Room {
     }
 
     public void collectObjectsAndBuildRoute(Maze maze, Route route) {
-        if (route.containsAllObjects(maze.objectsToCollect())) return;
+        if (allRequiredObjectsAreCollected(maze, route)) return;
         addCurrentRoomToRoute(route);
 
         moveToAdjacentRoom(maze, south, route);
@@ -52,8 +52,12 @@ public class Room {
         Room adjacentRoom = maze.findRoomById(toRoom);
         adjacentRoom.collectObjectsAndBuildRoute(maze, route);
 
-        if (route.containsAllObjects(maze.objectsToCollect())) return;
+        if (allRequiredObjectsAreCollected(maze, route)) return;
         addCurrentRoomToRoute(route);
+    }
+
+    private boolean allRequiredObjectsAreCollected(Maze maze, Route route) {
+        return route.containsAllObjects(maze.objectsToCollect());
     }
 
     private void addCurrentRoomToRoute(Route route) {
