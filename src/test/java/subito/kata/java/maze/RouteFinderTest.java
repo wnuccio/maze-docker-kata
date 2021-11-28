@@ -48,6 +48,20 @@ class RouteFinderTest {
     }
 
     @Test
+    // Rooms: (1*) -- (2)
+    void build_a_route_with_two_rooms_and_objects_all_in_the_second_room() {
+        Input input = Input.build()
+                .withRoom(Room.build().withId(1).withObjects().withEast(2))
+                .withRoom(Room.build().withId(2).withObjects("Plant", "Knife").withWest(1))
+                .startFromRoom(1)
+                .collect("Plant", "Knife");
+
+        Route route = routeFinder.findRouteFrom(input);
+
+        assertTraversedRoomsAre(route, 1, 2);
+    }
+
+    @Test
     // Rooms: (1) -- (2*)
     void build_a_route_with_two_rooms_starting_from_the_second() {
         Input input = Input.build()
