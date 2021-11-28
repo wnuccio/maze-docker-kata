@@ -22,10 +22,6 @@ public class Input implements Maze {
         objectsToCollect = new HashSet<>();
     }
 
-    public static InputBuilder build() {
-        return new InputBuilder();
-    }
-
     public List<Room> rooms() {
         return rooms;
     }

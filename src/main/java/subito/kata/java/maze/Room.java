@@ -18,10 +18,6 @@ public class Room {
         objects = new HashSet<>();
     }
 
-    public static RoomBuilder build() {
-        return new RoomBuilder();
-    }
-
     public int id() {
         return id;
     }

@@ -32,6 +32,6 @@ class RouteTest {
     }
 
     private Room roomWithObjects(int id, String... strings) {
-        return Room.build().withId(id).withObjects(strings).build();
+        return new RoomBuilder().withId(id).withObjects(strings).build();
     }
 }
