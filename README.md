@@ -23,23 +23,36 @@
   * nome-file-input (default: 'input.json'): il path del file relativo alla root di progetto
   * nome-file-output: il path del file di output; l'output viene in ogni caso mostrato anche a video
 
-## Note aggiuntive
-- Si assume che il labrinto in input sia ben formato, ad esempio:
-  * gli id delle stanze sono tutti diversi
-  * le stanze sono collegate reciprocamente in modo simmetrico
-  * gli oggetti sono tutti diversi tra loro.
 
+- È possibile testare l'applicazione con mappe diverse in due modi:
+  * modificando direttamente il file input.json
+  * creando un file apposito all'interno dell'alberatura di progetto e specificandolo come parametro
+    
+    (es. docker run -v $(pwd):/mnt -w /mnt mytest ./scripts/run.sh *custom-input.json*)
+    
+
+## Note aggiuntive
+- Non essendo esplicitato nella traccia, ho omesso di considerare i casi di errore, 
+  assumendo che il labrinto fornito in input sia sempre ben formato.
+  In particolare ho assunto che:
+  * gli id delle stanze siano tutti diversi
+  * l'identificativo della stanza di partenza sia valido (corrisponda ad una stanza effettivamente presente) 
+  * le stanze siano collegate reciprocamente in modo simmetrico
+  * nei collegamenti di una stanza siano indicati solo id validi di altre stanze
 
 - L'algoritmo visita le stanze finché non ha trovato tutti gli oggetti specificati,
   quindi potrebbe non visitare tutto il labirinto, e il labirinto potrebbe contenere
   più oggetti di quelli richiesti nel parametro "objects to collect".
+  
+
+- Per tale ragione l'algoritmo produce per il secondo caso ("Esempio 2") 
+  un percorso diverso da quello indicato nella traccia ma ugualmente valido.
+  Il percorso trovato non comprende tutte le stanze ma raccoglie tutti gli oggetti specificati.
 
 
 - Nel caso in cui non tutti gli oggetti richiesti siano presenti,
   l'algoritmo termina ugualmente dopo aver raccolto tutto ciò che può.
 
   
-- L'algoritmo produce, per il secondo caso "Esempio 2" un percorso diverso
-  ma ugualmente valido, che non comprende tutte le stanze ma raccoglie tutti gli oggetti specificati.
 
 
