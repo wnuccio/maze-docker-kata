@@ -19,13 +19,13 @@
   * docker run -v $(pwd):/mnt -w /mnt mytest ./scripts/run.sh [nome-file-input] [nome-file-output]
   
 
-- I parametri nell'ultimo comando sono opzionali:
-  * nome-file-input (default: 'input.json'): il path del file (relativo alla root di progetto)
-  * nome-file-output: il path del file di output; l'output viene in ogni caso mostrato anche a video
+- I parametri nell'ultimo comando sono opzionali e relativi alla root di progetto:
+  * nome-file-input: il path del file di input; se non specificato è di default 'input.json'
+  * nome-file-output: il path del file di output; se non specificato, l'output viene mostrato a video
 
 
 - È possibile testare l'applicazione con labirinti diversi in due modi:
-  * modificando direttamente il file input.json
+  * modificando direttamente il file input.json già fornito
   * creando un file apposito all'interno dell'alberatura di progetto e specificandolo come parametro
     (es.: docker run -v $(pwd):/mnt -w /mnt mytest ./scripts/run.sh *input2.json*)
     
@@ -35,9 +35,10 @@
   assumendo che il labrinto fornito in input sia sempre ben formato.
   In particolare ho assunto che:
   * gli id delle stanze siano tutti diversi
-  * l'identificativo della stanza di partenza sia valido (corrisponda ad una stanza effettivamente presente) 
+  * l'id della stanza di partenza sia valido (corrisponda ad una stanza effettivamente presente) 
   * le stanze siano collegate reciprocamente in modo simmetrico
   * nei collegamenti di una stanza siano indicati solo id validi di altre stanze
+  
 
 - L'algoritmo visita le stanze finché non ha trovato tutti gli oggetti specificati,
   quindi potrebbe non visitare tutto il labirinto e il labirinto potrebbe contenere
@@ -45,8 +46,8 @@
   
 
 - Per tale ragione l'algoritmo produce per il secondo caso ("Esempio 2") 
-  un percorso diverso da quello indicato nella traccia ma ugualmente valido.
-  Il percorso trovato non comprende tutte le stanze ma raccoglie tutti gli oggetti specificati.
+  un percorso diverso da quello indicato nella traccia ma ugualmente valido,
+  in quanto raccoglie tutti gli oggetti specificati.
 
 
 - Nel caso in cui non tutti gli oggetti richiesti siano presenti
